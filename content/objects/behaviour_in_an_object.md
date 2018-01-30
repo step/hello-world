@@ -2,6 +2,7 @@
 title: "Defining Behaviour In An Object"
 date: 2018-01-30T11:13:35+05:30
 draft: true
+categories: ["Objects"]
 ---
 
 If you have read the post [Why Objects?](/why_objects), then you will understand the need for tying data and behaviour together. If you haven't read it, please do so before you proceed any further.

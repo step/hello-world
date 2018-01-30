@@ -5,12 +5,13 @@
 </head>
 <body>
 	<h1> {{ .Title }} </h1>
-
-	{{ range .Data.Pages }}
+	<ul>
+    {{ range .Data.Pages }}
         <li>
-            <a href="{{.Permalink}}">{{.Title}}</a>
+            <a href="{{.Permalink}}"> {{ .Title }} </a>
         </li>
     {{ end }}
+  	</ul>
 
 </body>
 </html>

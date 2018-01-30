@@ -2,6 +2,7 @@
 title: "Patterns"
 date: 2018-01-30T11:59:56+05:30
 draft: true
+categories: ["Exercises"]
 ---
 
 #### Text based patterns

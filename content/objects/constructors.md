@@ -2,6 +2,7 @@
 title: "Constructors"
 date: 2018-01-30T11:16:11+05:30
 draft: true
+categories: ["Objects"]
 ---
 
 Please read [Why Objects?](/why_objects), [How Bind Works](/how_does_bind_work) and [How To Define Behaviour In An Object](/behaviour_in_an_object) before you proceed any further.

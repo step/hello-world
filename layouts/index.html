@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Hello World </title>
+</head>
+<body>
+	<h1> {{ .Title }} </h1>
+
+	<ul>
+    {{ range $categoryName, $taxonomy := .Site.Taxonomies.categories }}
+    	<h3> {{ $categoryName }} </h3>
+        <ul>
+        {{ range $taxonomy.Pages }}
+            <li><a href="{{ .Permalink}}"> {{ .LinkTitle }} </a> </li>
+        {{ end }}
+        </ul>
+    {{ end }}
+  	</ul>
+
+</body>
+</html>
