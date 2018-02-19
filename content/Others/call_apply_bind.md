@@ -2,7 +2,6 @@
 title: "call, apply and bind"
 date: 2018-01-30T11:54:50+05:30
 draft: true
-categories: ["Others"]
 ---
 
 ### The many ways of function-ing

@@ -4,7 +4,10 @@
 	<title> {{ .Title }} </title>
 </head>
 <body>
-	<h1> {{ .Title }}</h1>
+	{{ partial "header.html" . }}
+	<hr>
+	<h1> {{ .Title }} </h1>
+	<hr>
 	{{ .Content }}
 </body>
 </html>

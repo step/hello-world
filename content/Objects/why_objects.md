@@ -2,7 +2,6 @@
 title: "Why Objects"
 date: 2018-01-29T22:58:16+05:30
 draft: true
-categories: ["Objects"]
 ---
 
 #### The world as it is today

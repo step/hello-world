@@ -4,18 +4,17 @@
 	<title> Hello World </title>
 </head>
 <body>
-	<h1> {{ .Title }} </h1>
+    {{ partial "header.html" . }}
 
-	<ul>
-    {{ range $categoryName, $taxonomy := .Site.Taxonomies.categories }}
-    	<h3> {{ $categoryName }} </h3>
+    {{ range .Sections }}
+        <h3>{{ .Section }}</h3>
         <ul>
-        {{ range $taxonomy.Pages }}
-            <li><a href="{{ .Permalink}}"> {{ .LinkTitle }} </a> </li>
-        {{ end }}
+            {{ range .Pages }}
+            <li>
+                <a href="{{ .Permalink}}"> {{ .LinkTitle }} </a>
+            </li>
+            {{ end }}
         </ul>
     {{ end }}
-  	</ul>
-
 </body>
 </html>
