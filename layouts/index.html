@@ -9,11 +9,7 @@
     {{ range .Sections }}
         <h2> <a href="{{.Permalink}}"> {{ .Title }} </a> </h2>
         <ul>
-            {{ range .Pages }}
-            <li>
-                <a href="{{.Permalink}}"> {{ .LinkTitle }} </a>
-            </li>
-            {{ end }}
+            {{ partial "list_pages.html" . }}
         </ul>
     {{ end }}
 
