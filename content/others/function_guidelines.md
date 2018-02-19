@@ -2,6 +2,7 @@
 title: "Function Guidelines"
 date: 2018-01-30T11:38:43+05:30
 draft: true
+weight: 21
 ---
 
 Here are some guidelines that will help you write better functions. If you follow them that is. Just reading doesn't guarantee anything. :smiling_imp:
