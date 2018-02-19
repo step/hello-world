@@ -7,7 +7,7 @@
     {{ partial "header.html" . }}
 
     {{ range .Sections }}
-        <h3>{{ .Section }}</h3>
+        <h2> <a href="{{ .Permalink}}"> {{ .Section }} </a> </h2>
         <ul>
             {{ range .Pages }}
             <li>

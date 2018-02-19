@@ -4,6 +4,7 @@
 	<title> Hello World </title>
 </head>
 <body>
+    {{ partial "header.html" . }}
 	<h1> {{ .Title }} </h1>
 	<ul>
     {{ range .Data.Pages }}
