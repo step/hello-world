@@ -1,0 +1,35 @@
+@import "variables";
+
+body {
+  background-color: $white;
+  margin: 30px 250px;
+  font-family: sans-serif;
+  color: $black;
+
+  a {
+    color: #0366d6;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .header {
+    border-bottom: 1px solid #E3E3E3;
+    padding: 10px 0;
+  }
+
+  .home {
+    .section-heading {
+
+    }
+
+    .posts {
+      .post {
+        letter-spacing: 1px;
+        line-height: 1.5em
+      }
+    }
+  }
+}

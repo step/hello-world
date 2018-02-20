@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        {{ block "title" .}}
+            Hello World
+        {{ end }}
+    </title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    {{ partial "header.html" . }}
+
+    {{ block "main" . }}
+
+    {{ end }}
+</body>
+</html>

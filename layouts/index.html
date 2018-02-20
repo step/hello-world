@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title> Hello World </title>
-</head>
-<body>
-    {{ partial "header.html" . }}
-
+{{ define "main" }}
+    <div class="home">
     {{ range .Sections }}
-        <h2> <a href="{{.Permalink}}"> {{ .Title }} </a> </h2>
-        <ul>
+        <h3 class="section-heading"> {{ .Title }} <a href="{{.Permalink}}"> ∞ </a> </h3>
+        <ul class="posts">
             {{ partial "list_pages.html" . }}
         </ul>
     {{ end }}
-
-</body>
-</html>
+    </div>
+{{ end }}

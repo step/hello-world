@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title> {{ .Title }} </title>
-</head>
-<body>
-	{{ partial "header.html" . }}
+{{ define "title" }}
+	{{ .Title }}
+{{ end }}
+
+{{ define "main" }}
 	<h1> {{ .Title }} </h1>
 	<hr>
 	{{ .Content }}
-</body>
-</html>
+{{ end }}
