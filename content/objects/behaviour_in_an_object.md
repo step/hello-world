@@ -9,7 +9,7 @@ If you have read the post [Why Objects?](/why_objects), then you will understand
 
 Kavita and John have understood that it is necessary to tie data and behaviour together. One manner of doing it is to define the behaviour when you create the object.
 
-{{< highlight javascript >}}
+``` javascript
 var areaOfSquare=function() {
   return this.length * this.length;
 }
@@ -21,11 +21,11 @@ var createSquare=function(length) {
 }
 
 exports.createSquare=createSquare;
-{{< / highlight >}}
+```
 
 This can be used very easily now.
 
-{{< highlight javascript >}}
+``` javascript
 var tile=createSquare(10);
 console.log(tile.area());
 
@@ -37,7 +37,7 @@ var squares=[tile,chocolate];
 var areas=squares.map((square) => square.area());
 
 console.log(areas);
-{{< / highlight >}}
+```
 
 As you can see, this cleans things up considerably. However, observe that we had to manually associate the object's `area` property with the function `areaOfSquare` in `createSquare`. Also, we had to manually create an empty object `square` and associate the `length` property that way as well.
 
@@ -48,7 +48,7 @@ This is alright when there is just one property and one function. But if we had 
 
 
 For example:
-{{< highlight javascript >}}
+``` javascript
 var addSong=function(song) {
   this.songs.push(song);
 }
@@ -72,7 +72,7 @@ var createPlaylist=function() {
   playList.removeSong=removesong;
   playList.shuffle=shuffle;
 }
-{{< / highlight >}}
+```
 
 See if you can spot any problems in the example above. There's a very subtle problem that has serious consequences. Look closely.
 
@@ -81,16 +81,16 @@ See if you can spot any problems in the example above. There's a very subtle pro
 Another disadvantage is that behaviours are now listed as properties. Consider the prior example of creating squares.
 
 
-{{< highlight javascript >}}
+``` javascript
 var tile=createSquare(10);
 console.log(tile);
-{{< / highlight >}}
+```
 
 produces
 
-{{< highlight javascript >}}
+``` javascript
 { length: 10, area: [Function: areaOfSquare] }
-{{< / highlight >}}
+```
 
 While this doesn't directly affect us, it exposes more than it needs to. For instance, one now knows that the original function that the `area` property is bound to is `areaOfSquare` and they might try to access that function directly.
 

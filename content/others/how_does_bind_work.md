@@ -16,44 +16,44 @@ The English word [bind](https://www.merriam-webster.com/dictionary/bind) is a ve
 
 Consider this function:
 
-{{< highlight javascript >}}
+``` javascript
 const areaOfSquare=function() {
   return this.length * this.length;
 }
-{{< / highlight >}}
+```
 
 This function doesn't expect any input. Instead, it relies on the `this` object. It expects the `this` object to have the property length defined on it.
 
 If we just call it, then it will try to use the length defined in a global object or where you are calling it from:
 
-{{< highlight javascript >}}
+``` javascript
 this.length=10;
 let squareArea=areaOfSquare();
 console.log(squareArea);
-{{< / highlight >}}
+```
 
 produces:
 
-{{< highlight javascript >}}
+``` javascript
 100
-{{< / highlight >}}
+```
 
 This "`magic`" returns a valid value, in this case `100` because length has been defined on the global object. `areaOfSquare` tries to figure out what `this` means and uses the global object as `this`.
 
 However, we can do something interesting with bind here.
 
-{{< highlight javascript >}}
+``` javascript
 var tile={length:10};
 var areaOfTile=areaOfSquare.bind(tile);
 
 console.log(areaOfTile());
-{{< / highlight >}}
+```
 
 produces:
 
-{{< highlight javascript >}}
+``` javascript
 100
-{{< / highlight >}}
+```
 
 This also works magically! How? The answer lies with bind. `bind` ties the function `areaOfSquare` to the object `tile`. `bind` then returns a new function, which in this case is assigned to `areaOfTile`. When `areaOfTile` is called, `this` refers to `tile` as it has been bound.
 
@@ -64,7 +64,7 @@ It is important to remember that `bind` returns a reference to a new function an
 
 For instance:
 
-{{< highlight javascript >}}
+``` javascript
 const areaOfSquare=function() {
   return this.length * this.length;
 }
@@ -78,11 +78,11 @@ let squareArea=areaOfSquare();
 
 console.log(tileArea);
 console.log(squareArea);
-{{< / highlight >}}
+```
 
 produces
 
-{{< highlight javascript >}}
+``` javascript
 100
 25
-{{< / highlight >}}
+```

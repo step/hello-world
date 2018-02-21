@@ -14,28 +14,28 @@ title: Match The Following
 You are given two files. Each file contains different parts of the same string. The aim of this exercise is to match pairs of strings. For every string in the first file, there is a string in the second file whose first four characters are the same as the last four characters of the first.
 
 Sample of File 1:
-{{< highlight text >}}
+``` js
 79oklw
 381jstc
 453usja
 535bdxv
-{{< / highlight >}}
+```
 
 Sample of File 2:
-{{< highlight text >}}
+``` js
 jstc331
 oklw737
 bdxv211
 usja514
-{{< / highlight >}}
+```
 
 Sample output:
-{{< highlight text >}}
+``` js
 79oklw737
 381jstc331
 453usja514
 535bdxv211
-{{< / highlight >}}
+```
 
 In the above samples, `oklw`, `jstc`, `usja` and `bdxv` form the endings of the strings in File 1. They also form the beginnings of the string in File 2.
 

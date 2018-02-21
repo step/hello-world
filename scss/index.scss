@@ -2,9 +2,12 @@
 
 body {
   background-color: $white;
-  margin: 30px 250px;
-  font-family: sans-serif;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
   color: $black;
+  line-height: 1.5;
+  padding: 15px;
 
   a {
     color: #0366d6;
@@ -17,19 +20,26 @@ body {
 
   .header {
     border-bottom: 1px solid #E3E3E3;
-    padding: 10px 0;
   }
 
   .home {
     .section-heading {
 
     }
+  }
 
-    .posts {
-      .post {
-        letter-spacing: 1px;
-        line-height: 1.5em
-      }
+  ul.posts {
+    li.post {
+      letter-spacing: 1px;
+      line-height: 1.5em
     }
+  }
+
+  code {
+    padding: 0.1em 0.2em;
+    margin: 0;
+    background-color: rgba(27,31,35,0.05);
+    border-radius: 3px;
+    font-family: Menlo, Courier, monospace;
   }
 }

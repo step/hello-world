@@ -16,7 +16,7 @@ A constructor is simply a mechanism that creates a desired object. You may defin
 
 
 We have seen an example before to create a square. However, since we weren't using Javascript's mechanism to construct, we wrote it as follows:
-{{< highlight javascript >}}
+``` javascript
 var createSquare=function(length) {
   let square={length:length};
   // keep behaviour aside for now
@@ -24,10 +24,10 @@ var createSquare=function(length) {
 }
 
 var tile=createSquare(10);
-{{< / highlight >}}
+```
 
 Now, let us look at how to write this using Javascript's mechanism for dealing with constructors.
-{{< highlight javascript >}}
+``` javascript
 // Square is the constructor here
 var Square=function(length) {
   this.length=length;
@@ -35,12 +35,12 @@ var Square=function(length) {
 
 var tile=new Square(10);
 console.log(tile);
-{{< / highlight >}}
+```
 produces
 
-{{< highlight javascript >}}
+``` javascript
 Square { length: 10 }
-{{< / highlight >}}
+```
 
 Immediately, we see a few things.
 
@@ -68,7 +68,7 @@ But, before that, a small confession.
 
 In Javascript, functions are objects. At least, they behave like objects. You can set properties on them like you could on any other object. For instance:
 
-{{< highlight javascript >}}
+``` javascript
 var Square=function(length) {
   this.length=length;
 }
@@ -77,14 +77,14 @@ Square.colour="green";
 
 console.log(Square);
 console.log(Square.colour);
-{{< / highlight >}}
+```
 
 produces
 
-{{< highlight javascript >}}
+``` javascript
 { [Function: Square] colour: 'green' }
 green
-{{< / highlight >}}
+```
 
 **OMG!**
 
@@ -103,7 +103,7 @@ In other words, when you use the keyword `new`, then Javascript looks up the con
 
 Talking about code is like dancing about architecture. So let us look at an example:
 
-{{< highlight javascript >}}
+``` javascript
 var Square=function(length) {
   this.length=length;
 }
@@ -114,13 +114,13 @@ Square.prototype = {
 
 var tile=new Square(10);
 console.log(tile.area());
-{{< / highlight >}}
+```
 
 produces
 
-{{< highlight javascript >}}
+``` javascript
 100
-{{< / highlight >}}
+```
 
 Works like a charm!
 
@@ -131,7 +131,7 @@ We've seen `prototype`. However, we need to understand what it is and how it wor
 Prototype is a property. Its value is simply an object in itself.
 
 For instance:
-{{< highlight javascript >}}
+``` javascript
 var Square=function(length) {
   this.length=length;
 }
@@ -143,13 +143,13 @@ Square.prototype.area=function(){
   return this.length*this.length;
 }
 console.log(Square.prototype);
-{{< / highlight >}}
+```
 
 produces
 
-{{< highlight javascript >}}
+``` javascript
 { colour: 'green', age: 100, area: [Function] }
-{{< / highlight >}}
+```
 
 You will see that we initialised `Square.prototype` as an empty object here and added some properties to it such as `colour`,`age`, and `area`.
 
@@ -158,7 +158,7 @@ Again, apart from `area`, none of these properties are really useful. Notice, th
 We can define the `prototype` object in two different ways:
 
 **Method 1**
-{{< highlight javascript >}}
+``` javascript
 var Square=function(length) {
   this.length=length;
 }
@@ -171,14 +171,14 @@ Square.prototype.perimeter=function(){
   return 4 * this.length;
 }
 
-{{< / highlight >}}
+```
 
 Observe closely. There's something interesting going on here. `Square.prototype.area` implies that `Square.prototype` is an object. But we didn't define it. It should have complained.
 
  So how does this work. Try defining any function in Javascript and try accessing its `prototype` property and you will see that Javascript inserts a `prototype` property by default into functions.
 
 **Method 2**
-{{< highlight javascript >}}
+``` javascript
 var Square=function(length) {
   this.length=length;
 }
@@ -191,7 +191,7 @@ Square.prototype={
     return 4 * this.length;
   }
 }
-{{< / highlight >}}
+```
 
 This method simply defines a fresh object with key value pairs. This `prototype` has two properties `area` and `perimeter`, both of which have functions for values. It is important to note the comma that comes between both properties. Remember, `prorotype` is an object. So when we define its properties as key-value pairs, we have to separate them with a comma.
 

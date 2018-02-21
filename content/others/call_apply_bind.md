@@ -24,7 +24,7 @@ The `call` function has the following syntax in Javascript.
 > _function.call(thisArg, arg1, arg2, ...)_
 
 Consider this example:
-{{< highlight javascript >}}
+``` javascript
 // Simple function to calculate the area of a square
 var area=function() {
   return this.length * this.length;
@@ -40,20 +40,20 @@ var areaOfChocolate=area.call(chocolate)
 
 console.log("Area of tile is",areaOfTile);
 console.log("Area of chocolate is",areaOfChocolate);
-{{< / highlight >}}
+```
 
 produces
 
-{{< highlight javascript >}}
+``` javascript
 Area of tile is 100
 Area of chocolate is 25
-{{< / highlight >}}
+```
 
 This is very straightforward. The function `area` is being called first with `tile` as the calling context and in the second case, `chocolate` as the calling context. In other words, the `this` argument in both calls are `tile` and `chocolate` respectively. In fact, that is all call does. It simply invokes the function with the calling context provided as the first argument.
 
 What about other arguments? Let us see.
 
-{{< highlight javascript >}}
+``` javascript
 // Function to tell if a person is older than a given age
 var isOlderThan=function(age) {
   return this.age>age;
@@ -69,20 +69,20 @@ var isKavitaOfVotingAge=isOlderThan.call(kavita,20);
 
 console.log("Is John eligible to vote:",isJohnOfVotingAge);
 console.log("Is Kavita eligible to vote:",isKavitaOfVotingAge);
-{{< / highlight >}}
+```
 
 produces
 
-{{< highlight javascript >}}
+``` javascript
 Is John eligible to vote: false
 Is Kavita eligible to vote: true
-{{< / highlight >}}
+```
 
 This should be quite easy to understand. The second argument to `call` are simply `18` and `20` in each case respectively. Rememeber, `isOlderThan` takes a single argument, unlike `area` in the previous example. So, we need to pass the age argument as a part of `call`. Otherwise, the function will receive `undefined` as the argument and will return the value accordingly.
 
 Of course this will work with more than one argument too.
 
-{{< highlight javascript >}}
+``` javascript
 // A function that evaluates if a person is within a specified age range
 var isAgeBetween=function(lowerLimit,upperLimit) {
   return lowerLimit<=this.age && this.age<=upperLimit;
@@ -98,7 +98,7 @@ var isKavitaATeenager=isAgeBetween.call(kavita,13,19);
 
 console.log("John is a teenager:",isJohnATeenager);
 console.log("Kavita is a teenager:",isKavitaATeenager);
-{{< / highlight >}}
+```
 
 As you can see, `call` can work when the function being called accepts more than one argument as well.
 
@@ -120,7 +120,7 @@ In fact, the only difference is that `apply` expects an array of arguments. That
 
 Let us use a previous example.
 
-{{< highlight javascript >}}
+``` javascript
 // Simple function to calculate the area of a square
 var area=function() {
   return this.length * this.length;
@@ -136,17 +136,17 @@ var areaOfChocolate=area.apply(chocolate)
 
 console.log("Area of tile is",areaOfTile);
 console.log("Area of chocolate is",areaOfChocolate);
-{{< / highlight >}}
+```
 produces
 
-{{< highlight javascript >}}
+``` javascript
 Area of tile is 100
 Area of chocolate is 25
-{{< / highlight >}}
+```
 
 This works *exactly* as `call`. No differences when the function takes no arguments. Let us now try the second example from `call` but with `apply` instead.
 
-{{< highlight javascript >}}
+``` javascript
 // Function to tell if a person is older than a given age
 var isOlderThan=function(age) {
   return this.age>age;
@@ -162,22 +162,22 @@ var isKavitaOfVotingAge=isOlderThan.apply(kavita,20);
 
 console.log("Is John eligible to vote:",isJohnOfVotingAge);
 console.log("Is Kavita eligible to vote:",isKavitaOfVotingAge);
-{{< / highlight >}}
+```
 
 If you try running this, you will see something like this:
 
-{{< highlight javascript >}}
+``` javascript
 TypeError: CreateListFromArrayLike called on non-object
-{{< / highlight >}}
+```
 
 What is happening here? Remember, `apply` expects an _**array**_ of arguments.
 
 All we have to do is change the lines where we apply the function to read as follows:
 
-{{< highlight javascript >}}
+``` javascript
 var isJohnOfVotingAge=isOlderThan.apply(john,[18]);
 var isKavitaOfVotingAge=isOlderThan.apply(kavita,[20]);
-{{< / highlight >}}
+```
 and everything will work as expected. We have now used `apply` by passing `18` and `20` inserted into arrays.
 
 All this is very fine, but does `apply` *really* have a use case beyond what is shown?
@@ -189,7 +189,7 @@ Turns out it does.
 
 Consider a series of tests on `isOdd`
 
-{{< highlight javascript >}}
+``` javascript
 const isOdd=function(number) {
   return number%2!=0;
 }
@@ -213,13 +213,13 @@ const testEvenNegativeNumbers=function() {
 const testZero=function() {
   assert.equal(true,isOdd(0))
 }
-{{< / highlight >}}
+```
 
 This is fine, but it is too involved. All the functions are simply asserting against different expectations and arguments.
 
 What if we write a generic function that can test anything?
 
-{{< highlight javascript >}}
+``` javascript
 const isOdd=function(number) {
   return number%2!=0;
 }
@@ -240,7 +240,7 @@ var tests=[
 tests.forEach(function(test){
   testAnything(test.msg,test.expectation,test.fnName,test.argument);
 });
-{{< / highlight >}}
+```
 
 Wow! This is sweet! We have a function that we can now use to test any suite of tests for any function. Kind of. This above solution is somewhat nicer than what we had before. We will have a runtime report of what is happening because of the console logs. It is also much shorter.
 
@@ -254,13 +254,13 @@ So what would we need to be able to test anything. We would need some manner to 
 
 Which one though? Will `call` work? Let us see.
 
-{{< highlight javascript >}}
+``` javascript
 const testAnything=function(msg,expectation,fnName,arg1,arg2) {
   console.log(msg);
   let actual=fnName.call(null,arg1,arg2);
   assert.equal(expectation,actual);
 }
-{{< / highlight >}}
+```
 
 This won't work, will it? What if we have 3 arguments instead of 2? What about 5? The problem with `call` is that it requires us to know exactly how many arguments to call when we *write* the function. However, in this case, we need a manner to apply a variable number of arguments at *runtime*.
 
@@ -269,7 +269,7 @@ Well, what about `apply`? Maybe it will work, but before we try that, we also ha
 Read about [how this is done](varargs) if you don't know it already.
 
 Let us see.
-{{< highlight javascript >}}
+``` javascript
 const isOdd=function(number) {
   return number%2!=0;
 }
@@ -291,7 +291,7 @@ testAnything("even positive numbers",false,isOdd,2);
 // testing functions that take multiple arguments
 testAnything("first number greater",2,greaterOf,2,1);
 testAnything("second number greater",2,greaterOf,1,2);
-{{< / highlight >}}
+```
 > _We have used `null` as the first argument to `apply` because we don't really have a calling context here._
 
 We now truly have a `testAnything`. In fact, now our `testAnything` can be improved to have more `console.log` statements that outline the arguments passed and we will have a lot more informative framework.
@@ -310,7 +310,7 @@ What is partial application? It is a process where we fix a function with a few 
 
 An example:
 
-{{< highlight javascript >}}
+``` javascript
 var greaterThan=function(x,y) {
   return x>y;
 }
@@ -318,31 +318,31 @@ var greaterThan=function(x,y) {
 var isTenGreaterThan=greaterThan.bind(null,10);
 console.log(isTenGreaterThan(5));
 console.log(isTenGreaterThan(15));
-{{< / highlight >}}
+```
 
 produces
 
-{{< highlight javascript >}}
+``` javascript
 true
 false
-{{< / highlight >}}
+```
 
 What is happening here? `greaterThan` is bound to the `null` object. Binding to the `null` object is fine here because our `greaterThan` has no `this` references. Importantly, once bound, `bind` returns a new function. This function already has its first argument supplied. In this case, we have supplied 10 as the first argument.
 
 Our new function `isTenGreaterThan` does exactly what it says. Which is, it calls `greaterThan` with 10 as the first argument. The first argument you supply to `isTenGreaterThan` now becomes the second argument to `greaterThan`.
 
 Consider this:
-{{< highlight javascript >}}
+``` javascript
 const numbersBelowThreshold=function(numbers,threshold) {
   return numbers.filter(function(number){
     return threshold>number;
   });
 }
-{{< / highlight >}}
+```
 
 One of the disadvantages of the above is that `filter` now takes an anonymous function. Anonymous functions are notorious in that they can't be tested easily. Partial application solves this problem very neatly.
 
-{{< highlight javascript >}}
+``` javascript
 var greaterThan=function(x,y) {
   return x>y;
 }
@@ -351,7 +351,7 @@ const numbersBelowThreshold=function(numbers,threshold) {
   let isNumberBelowThreshold=greaterThan.bind(null,threshold);
   return numbers.filter(isNumberBelowThreshold);
 }
-{{< / highlight >}}
+```
 
 Much better. The logic of comparing two numbers is now testable. `filter` no longer takes an anonymous function. We applied partial application in order to remove the anonymity of the function that `filter` accepts.
 

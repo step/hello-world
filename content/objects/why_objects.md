@@ -14,33 +14,33 @@ John and Kavita are two people who are writing some code.
 
 John wants to calculate the area of a square. So he writes this fancy function.
 
-{{< highlight javascript >}}
+```javascript
 var areaOfSquare=function(square) {
   return square.length * square.length;
 };
 
 exports.areaOfSquare=areaOfSquare;
-{{< / highlight >}}
+```
 
 You can see that his function expects an object that has the length property in it. John being kind, shares his code by exporting his function.
 
 
 Kavita comes along, finds that this is exactly what she needs and uses his function.
 
-{{< highlight javascript >}}
+```javascript
 let square={length:10};
 console.log(areaOfSquare(square));
 
 let tile={lenght:20};
 console.log(areaOfSquare(tile));
-{{< / highlight >}}
+```
 
 Kavita is excited and runs her code, only to find that while the first square's area is calculated correctly, the second square, indicated by the variable tile, produces `NaN`.
 
-{{< highlight javascript >}}
+```javascript
 100
 NaN
-{{< / highlight >}}
+```
 
 Observe closely and you will find that Kavita made a spelling mistake in the definition of tile and used `lenght` instead of `length`. Kavita quickly realises that there needs to be a consistent way of creating a square object. The possibility of making typing mistakes is high.
 
@@ -48,25 +48,25 @@ She complains to John about this problem. But being more than just someone who c
 
 She writes the following function.
 
-{{< highlight javascript >}}
+```javascript
 var createSquare=function(length) {
   return {length:length};
 }
 
 exports.createSquare=createSquare;
-{{< / highlight >}}
+```
 
 This is beautiful! It works! Every time one wants to make a square object, they call this function. Kavita is happy. For now. After a while, she discovers something interesting. She was writing some code and something strange happened. Here's what she wrote.
 
 
-{{< highlight javascript >}}
+```javascript
 var tile=createSquare(20);
 var chocolate=createSquare(10);
 
 var squares=[tile,chocolate];
 
 console.log("The area of tile is",areaOfSquare(squares));
-{{< / highlight >}}
+```
 
 Observe this very closely. The `areaOfSquare` function expects an object whose `length` property is defined. `squares` is a list that has a `length` property.
 
@@ -84,42 +84,42 @@ Kavita and John are still not sure how to fix the problem of a method expecting 
 
 Consider a new definition of `createSquare` now.
 
-{{< highlight javascript >}}
+```javascript
 const areaOfSquare=function() {
   return this.length * this.length;
 }
-{{< / highlight >}}
+```
 
 
-{{< highlight javascript >}}
+```javascript
 let tile=createSquare(10);
 let areaOfTile=areaOfSquare.bind(tile);
 
 console.log(areaOfTile());
-{{< / highlight >}}
+```
 
 produces
 
-{{< highlight javascript >}}
+```javascript
 100
-{{< / highlight >}}
+```
 
 Yay! This works. Or does it? Let us see.
 
 Kavita can still bind a list to `areaOfSquare`.
 
-{{< highlight javascript >}}
+```javascript
 let numbers=[1,2,3];
 
 let areaOfNumbers=areaOfSquare.bind(numbers);
 console.log(areaOfNumbers());
-{{< / highlight >}}
+```
 
 produces
 
-{{< highlight javascript >}}
+```javascript
 9
-{{< / highlight >}}
+```
 
 Nothing prevents us from doing this. Which means, the behaviour `areaOfSquare` still doesn't have anything to do with a square. It simply works on a property called `length`.
 
@@ -140,4 +140,4 @@ Not having a system that automatically ties data and behaviour does the followin
   * Every new instance of an object has to be bound again to the behaviour desired.
 
 
-It would be good to read how to [define behaviour in an object](/behaviour_in_an_object) next.
+It would be good to read how to [define behaviour in an object](behaviour_in_an_object) next.

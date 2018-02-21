@@ -17,7 +17,7 @@ There are two ways to achieve this. One is to use the `arguments` object. The ot
 Javascript has a special object called `arguments` available to you within all of your functions. This special object is automatically filled with all the values of the arguments that you passed. The `arguments` object is not an array.
 
 Enough talking. Here is some magic
-{{< highlight javascript >}}
+``` javascript
 const magic=function() {
   console.log("You entered",arguments.length,"arguments");
   for (var i = 0; i < arguments.length; i++) {
@@ -30,11 +30,11 @@ console.log("--");
 magic("hello","world");
 console.log("--");
 magic(10,9,8);
-{{< / highlight >}}
+```
 
 produces
 
-{{< highlight javascript >}}
+``` javascript
 You entered 1 arguments
 1 'a'
 --
@@ -46,7 +46,7 @@ You entered 3 arguments
 1 10
 2 9
 3 8
-{{< / highlight >}}
+```
 
 Wow! That really is some magic. This function knows everything about the arguments you passed! As you can see, this is useful. `arguments` has some other features that you can read about in detail [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments).
 
@@ -56,14 +56,14 @@ The one important thing to note here is that the `arguments` object is not an `A
 
 Another way to deal with a variable number of arguments is to use the `...` operator.
 
-{{< highlight javascript >}}
+``` javascript
 const magic=function(...args) {
   console.log("You entered",args.length,"arguments");
   for (var i = 0; i < args.length; i++) {
     console.log(i+1,args[i]);
   }  
 }
-{{< / highlight >}}
+```
 
 Running the above produces the exact same output as the `magic` function in the previous section. The main thing to note here is that the `args` variable is an array. Which means, you can use all the array methods that are available such as `map`, `filter`, `slice` et al.
 

@@ -14,7 +14,7 @@ _Do not reinvent unnecessary wheels_
 **1. Filled Rectangle**
 
 Generate a filled rectangle of MxN dimension. Additionally the user should be able to specify the character used to fill the rectangle.
-{{< highlight text >}}
+``` js
 // 1 x 1, *
 *
 
@@ -37,7 +37,7 @@ AAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAA
-{{< / highlight >}}
+```
 
 ----
 
@@ -45,7 +45,7 @@ AAAAAAAAAAAAAAAAAAAA
 
 Generate a hollow rectangle of MxN dimension. Additionally the user should be able to specify the character that outlines the rectangle.
 
-{{< highlight text >}}
+``` js
 // 1 x 1, *
 *
 
@@ -73,14 +73,14 @@ Generate a hollow rectangle of MxN dimension. Additionally the user should be ab
 +                  +
 +                  +
 ++++++++++++++++++++
-{{< / highlight >}}
+```
 ----
 
 **3. Cyclical Lines**
 
 Generate N lines of length M. The text used to generate the line should be cycled through a list of characters
 
-{{< highlight text >}}
+``` js
 // 3 x 1,+,-
 +
 -
@@ -108,14 +108,14 @@ Generate N lines of length M. The text used to generate the line should be cycle
 +
 +
 
-{{< / highlight >}}
+```
 
 ----
 **4. Left Aligned Triangle**
 
 Generate a left-aligned right angled triangle of size N as follows:
 
-{{< highlight text >}}
+``` js
 // 2,-
 -
 --
@@ -133,13 +133,13 @@ Generate a left-aligned right angled triangle of size N as follows:
 *****
 ******
 
-{{< / highlight >}}
+```
 ----
 **5. Right Aligned Triangle**
 
 Generate a right-aligned right angled triangle of size N as follows:
 
-{{< highlight text >}}
+``` js
 // 2,-(the empty line below is simply to differentiate. Your output should not contain it)
 
  -
@@ -160,14 +160,14 @@ Generate a right-aligned right angled triangle of size N as follows:
  *****
 ******
 
-{{< / highlight >}}
+```
 
 ----
 **6. Left Aligned Hollow Triangle**
 
 Generate a left-aligned right angled hollow triangle of size N as follows:
 
-{{< highlight text >}}
+``` js
 // 2,-
 -
 --
@@ -191,13 +191,13 @@ Generate a left-aligned right angled hollow triangle of size N as follows:
 *   *
 ******
 
-{{< / highlight >}}
+```
 ----
 **7. Right Aligned Hollow Triangle**
 
 Generate a right-aligned right angled hollow triangle of size N as follows:
 
-{{< highlight text >}}
+``` js
 // 2,-(the empty line below is simply to differentiate. Your output should not contain it)
 
  -
@@ -225,13 +225,13 @@ Generate a right-aligned right angled hollow triangle of size N as follows:
  *   *
 ******
 
-{{< / highlight >}}
+```
 ----
 **8. Diamond**
 
 Generate a diamond of size N and the specified character. N specifies the widest part of the diamond(the middle line). N needs to be odd. If an even number is supplied, round it *up* to the nearest odd.
 
-{{< highlight text >}}
+``` js
 // 3,+
  +
 +++
@@ -251,13 +251,13 @@ Generate a diamond of size N and the specified character. N specifies the widest
  ***
   *
 
-{{< / highlight >}}
+```
 ----
 **9. Hollow Diamond**
 
 Generate a hollow diamond of size N and the specified character. N specifies the widest part of the diamond(the middle line). N needs to be odd. If an even number is supplied, round it *up* to the nearest odd.
 
-{{< highlight text >}}
+``` js
 // 3,+
  +
 + +
@@ -277,13 +277,13 @@ Generate a hollow diamond of size N and the specified character. N specifies the
  * *
   *
 
-{{< / highlight >}}
+```
 ----
 **10. Angled Hollow Diamond**
 
 Generate a hollow diamond whose edges are sloped. Unlike the previous diamond examples, this diamond only uses the character specified on the tips of the diamond.
 
-{{< highlight text >}}
+``` js
 // 3,-
  -
 - -
@@ -305,6 +305,6 @@ Generate a hollow diamond whose edges are sloped. Unlike the previous diamond ex
   \ /
    *
 
-{{< / highlight >}}
+```
 ----
 
