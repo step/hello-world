@@ -5,12 +5,6 @@ draft: true
 weight: 31
 ---
 
----
-title: Match The Following
----
-
-#### Match The Following
-
 You are given two files. Each file contains different parts of the same string. The aim of this exercise is to match pairs of strings. For every string in the first file, there is a string in the second file whose first four characters are the same as the last four characters of the first.
 
 Sample of File 1:
