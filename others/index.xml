@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Others on Hello World</title>
-    <link>https://step.github.io/hello-world/others/</link>
+    <link>https://github.com/step/hello-world/others/</link>
     <description>Recent content in Others on Hello World</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 30 Jan 2018 11:57:08 +0530</lastBuildDate>
     
-	<atom:link href="https://step.github.io/hello-world/others/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://github.com/step/hello-world/others/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Function Guidelines</title>
-      <link>https://step.github.io/hello-world/others/function_guidelines/</link>
+      <link>https://github.com/step/hello-world/others/function_guidelines/</link>
       <pubDate>Tue, 30 Jan 2018 11:38:43 +0530</pubDate>
       
-      <guid>https://step.github.io/hello-world/others/function_guidelines/</guid>
+      <guid>https://github.com/step/hello-world/others/function_guidelines/</guid>
       <description>Here are some guidelines that will help you write better functions. If you follow them that is. Just reading doesn&amp;rsquo;t guarantee anything. 😈
 Responsibility
  A function should do only one thing and do it well ⭐️ ⭐️ ⭐️  Naming your functions
@@ -25,20 +25,20 @@ Responsibility
     
     <item>
       <title>Varargs</title>
-      <link>https://step.github.io/hello-world/others/varargs/</link>
+      <link>https://github.com/step/hello-world/others/varargs/</link>
       <pubDate>Tue, 30 Jan 2018 11:49:10 +0530</pubDate>
       
-      <guid>https://step.github.io/hello-world/others/varargs/</guid>
+      <guid>https://github.com/step/hello-world/others/varargs/</guid>
       <description>The magic of variable length arguments Javascript lets us call function with any number of arguments. This seems powerful, but in order to make use of this ability, we need to know how many arguments have been passed and we need to be able to access them individually.
 There are two ways to achieve this. One is to use the arguments object. The other is to use the ... syntax.</description>
     </item>
     
     <item>
       <title>How does bind work ?</title>
-      <link>https://step.github.io/hello-world/others/how_does_bind_work/</link>
+      <link>https://github.com/step/hello-world/others/how_does_bind_work/</link>
       <pubDate>Tue, 30 Jan 2018 11:51:36 +0530</pubDate>
       
-      <guid>https://step.github.io/hello-world/others/how_does_bind_work/</guid>
+      <guid>https://github.com/step/hello-world/others/how_does_bind_work/</guid>
       <description>What is bind? The English word bind is a verb that means to make secure by tying.
 Function.prototype.bind is a function that can do very useful things. Assuming that you understand the concept of this in Javascript, bind is very easy to understand. bind simply ties an object to a function, so that the function assumes this to refer to the object when it executes.
 The way bind works. Consider this function:</description>
@@ -46,10 +46,10 @@ The way bind works. Consider this function:</description>
     
     <item>
       <title>call, apply and bind</title>
-      <link>https://step.github.io/hello-world/others/call_apply_bind/</link>
+      <link>https://github.com/step/hello-world/others/call_apply_bind/</link>
       <pubDate>Tue, 30 Jan 2018 11:54:50 +0530</pubDate>
       
-      <guid>https://step.github.io/hello-world/others/call_apply_bind/</guid>
+      <guid>https://github.com/step/hello-world/others/call_apply_bind/</guid>
       <description>The many ways of function-ing Javascript offers many ways of invoking a function. The most common way of course is to simply say its name and it shall show up. Just like a genie. But, sometimes, this common way doesn&amp;rsquo;t work, because well, we have an uncommon situation.
 Here are some situations: * Not knowing how many arguments are passed into a function * Needing to invoke a function with a different calling context(this) * Needing a bound reference to a function that operates on a specific object</description>
     </item>

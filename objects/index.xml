@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Objects on Hello World</title>
-    <link>https://step.github.io/hello-world/objects/</link>
+    <link>https://github.com/step/hello-world/objects/</link>
     <description>Recent content in Objects on Hello World</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 30 Jan 2018 11:57:08 +0530</lastBuildDate>
     
-	<atom:link href="https://step.github.io/hello-world/objects/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://github.com/step/hello-world/objects/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Why Objects</title>
-      <link>https://step.github.io/hello-world/objects/why_objects/</link>
+      <link>https://github.com/step/hello-world/objects/why_objects/</link>
       <pubDate>Mon, 29 Jan 2018 22:58:16 +0530</pubDate>
       
-      <guid>https://step.github.io/hello-world/objects/why_objects/</guid>
+      <guid>https://github.com/step/hello-world/objects/why_objects/</guid>
       <description>The world as it is today Let us look at how the world exists without objects.
 John and Kavita are two people who are writing some code.
 John wants to calculate the area of a square. So he writes this fancy function.
@@ -25,10 +25,10 @@ var areaOfSquare=function(square) { return square.length * square.length; }; exp
     
     <item>
       <title>Defining Behaviour In An Object</title>
-      <link>https://step.github.io/hello-world/objects/behaviour_in_an_object/</link>
+      <link>https://github.com/step/hello-world/objects/behaviour_in_an_object/</link>
       <pubDate>Tue, 30 Jan 2018 11:13:35 +0530</pubDate>
       
-      <guid>https://step.github.io/hello-world/objects/behaviour_in_an_object/</guid>
+      <guid>https://github.com/step/hello-world/objects/behaviour_in_an_object/</guid>
       <description>If you have read the post Why Objects?, then you will understand the need for tying data and behaviour together. If you haven&amp;rsquo;t read it, please do so before you proceed any further.
 Kavita and John have understood that it is necessary to tie data and behaviour together. One manner of doing it is to define the behaviour when you create the object.
 var areaOfSquare=function() { return this.length * this.</description>
@@ -36,10 +36,10 @@ var areaOfSquare=function() { return this.length * this.</description>
     
     <item>
       <title>Constructors</title>
-      <link>https://step.github.io/hello-world/objects/constructors/</link>
+      <link>https://github.com/step/hello-world/objects/constructors/</link>
       <pubDate>Tue, 30 Jan 2018 11:16:11 +0530</pubDate>
       
-      <guid>https://step.github.io/hello-world/objects/constructors/</guid>
+      <guid>https://github.com/step/hello-world/objects/constructors/</guid>
       <description>Please read Why Objects?, How Bind Works and How To Define Behaviour In An Object before you proceed any further.
 We have now firmly established the need for an automated mechanism to create objects and associate behaviours with it. As mentioned earlier, Javascript has the ability to do so. We achieve this by using a concept called constructors.
 What is a constructor? A constructor is simply a mechanism that creates a desired object.</description>
@@ -47,10 +47,10 @@ What is a constructor? A constructor is simply a mechanism that creates a desire
     
     <item>
       <title>What is this ?</title>
-      <link>https://step.github.io/hello-world/objects/this/</link>
+      <link>https://github.com/step/hello-world/objects/this/</link>
       <pubDate>Tue, 30 Jan 2018 11:25:03 +0530</pubDate>
       
-      <guid>https://step.github.io/hello-world/objects/this/</guid>
+      <guid>https://github.com/step/hello-world/objects/this/</guid>
       <description>But this is preposterous!Yes, it is.
  What is this? this is a reference to some object. What does that mean? It means that this is not something that has an intrinsic value.
 Consider

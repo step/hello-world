@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hello World</title>
-    <link>https://step.github.io/hello-world/</link>
+    <link>https://github.com/step/hello-world/</link>
     <description>Recent content on Hello World</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 29 Jan 2018 22:58:16 +0530</lastBuildDate>
     
-	<atom:link href="https://step.github.io/hello-world/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://github.com/step/hello-world/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Why Objects</title>
-      <link>https://step.github.io/hello-world/objects/why_objects/</link>
+      <link>https://github.com/step/hello-world/objects/why_objects/</link>
       <pubDate>Mon, 29 Jan 2018 22:58:16 +0530</pubDate>
       
-      <guid>https://step.github.io/hello-world/objects/why_objects/</guid>
+      <guid>https://github.com/step/hello-world/objects/why_objects/</guid>
       <description>The world as it is today Let us look at how the world exists without objects.
 John and Kavita are two people who are writing some code.
 John wants to calculate the area of a square. So he writes this fancy function.
@@ -25,10 +25,10 @@ var areaOfSquare=function(square) { return square.length * square.length; }; exp
     
     <item>
       <title>Defining Behaviour In An Object</title>
-      <link>https://step.github.io/hello-world/objects/behaviour_in_an_object/</link>
+      <link>https://github.com/step/hello-world/objects/behaviour_in_an_object/</link>
       <pubDate>Tue, 30 Jan 2018 11:13:35 +0530</pubDate>
       
-      <guid>https://step.github.io/hello-world/objects/behaviour_in_an_object/</guid>
+      <guid>https://github.com/step/hello-world/objects/behaviour_in_an_object/</guid>
       <description>If you have read the post Why Objects?, then you will understand the need for tying data and behaviour together. If you haven&amp;rsquo;t read it, please do so before you proceed any further.
 Kavita and John have understood that it is necessary to tie data and behaviour together. One manner of doing it is to define the behaviour when you create the object.
 var areaOfSquare=function() { return this.length * this.</description>
@@ -36,10 +36,10 @@ var areaOfSquare=function() { return this.length * this.</description>
     
     <item>
       <title>Constructors</title>
-      <link>https://step.github.io/hello-world/objects/constructors/</link>
+      <link>https://github.com/step/hello-world/objects/constructors/</link>
       <pubDate>Tue, 30 Jan 2018 11:16:11 +0530</pubDate>
       
-      <guid>https://step.github.io/hello-world/objects/constructors/</guid>
+      <guid>https://github.com/step/hello-world/objects/constructors/</guid>
       <description>Please read Why Objects?, How Bind Works and How To Define Behaviour In An Object before you proceed any further.
 We have now firmly established the need for an automated mechanism to create objects and associate behaviours with it. As mentioned earlier, Javascript has the ability to do so. We achieve this by using a concept called constructors.
 What is a constructor? A constructor is simply a mechanism that creates a desired object.</description>
@@ -47,10 +47,10 @@ What is a constructor? A constructor is simply a mechanism that creates a desire
     
     <item>
       <title>What is this ?</title>
-      <link>https://step.github.io/hello-world/objects/this/</link>
+      <link>https://github.com/step/hello-world/objects/this/</link>
       <pubDate>Tue, 30 Jan 2018 11:25:03 +0530</pubDate>
       
-      <guid>https://step.github.io/hello-world/objects/this/</guid>
+      <guid>https://github.com/step/hello-world/objects/this/</guid>
       <description>But this is preposterous!Yes, it is.
  What is this? this is a reference to some object. What does that mean? It means that this is not something that has an intrinsic value.
 Consider
@@ -59,10 +59,10 @@ let a=5;  a=5 in the above example tells us that a has a value of 5. Unlike a, t
     
     <item>
       <title>Function Guidelines</title>
-      <link>https://step.github.io/hello-world/others/function_guidelines/</link>
+      <link>https://github.com/step/hello-world/others/function_guidelines/</link>
       <pubDate>Tue, 30 Jan 2018 11:38:43 +0530</pubDate>
       
-      <guid>https://step.github.io/hello-world/others/function_guidelines/</guid>
+      <guid>https://github.com/step/hello-world/others/function_guidelines/</guid>
       <description>Here are some guidelines that will help you write better functions. If you follow them that is. Just reading doesn&amp;rsquo;t guarantee anything. 😈
 Responsibility
  A function should do only one thing and do it well ⭐️ ⭐️ ⭐️  Naming your functions
@@ -71,20 +71,20 @@ Responsibility
     
     <item>
       <title>Varargs</title>
-      <link>https://step.github.io/hello-world/others/varargs/</link>
+      <link>https://github.com/step/hello-world/others/varargs/</link>
       <pubDate>Tue, 30 Jan 2018 11:49:10 +0530</pubDate>
       
-      <guid>https://step.github.io/hello-world/others/varargs/</guid>
+      <guid>https://github.com/step/hello-world/others/varargs/</guid>
       <description>The magic of variable length arguments Javascript lets us call function with any number of arguments. This seems powerful, but in order to make use of this ability, we need to know how many arguments have been passed and we need to be able to access them individually.
 There are two ways to achieve this. One is to use the arguments object. The other is to use the ... syntax.</description>
     </item>
     
     <item>
       <title>How does bind work ?</title>
-      <link>https://step.github.io/hello-world/others/how_does_bind_work/</link>
+      <link>https://github.com/step/hello-world/others/how_does_bind_work/</link>
       <pubDate>Tue, 30 Jan 2018 11:51:36 +0530</pubDate>
       
-      <guid>https://step.github.io/hello-world/others/how_does_bind_work/</guid>
+      <guid>https://github.com/step/hello-world/others/how_does_bind_work/</guid>
       <description>What is bind? The English word bind is a verb that means to make secure by tying.
 Function.prototype.bind is a function that can do very useful things. Assuming that you understand the concept of this in Javascript, bind is very easy to understand. bind simply ties an object to a function, so that the function assumes this to refer to the object when it executes.
 The way bind works. Consider this function:</description>
@@ -92,20 +92,20 @@ The way bind works. Consider this function:</description>
     
     <item>
       <title>call, apply and bind</title>
-      <link>https://step.github.io/hello-world/others/call_apply_bind/</link>
+      <link>https://github.com/step/hello-world/others/call_apply_bind/</link>
       <pubDate>Tue, 30 Jan 2018 11:54:50 +0530</pubDate>
       
-      <guid>https://step.github.io/hello-world/others/call_apply_bind/</guid>
+      <guid>https://github.com/step/hello-world/others/call_apply_bind/</guid>
       <description>The many ways of function-ing Javascript offers many ways of invoking a function. The most common way of course is to simply say its name and it shall show up. Just like a genie. But, sometimes, this common way doesn&amp;rsquo;t work, because well, we have an uncommon situation.
 Here are some situations: * Not knowing how many arguments are passed into a function * Needing to invoke a function with a different calling context(this) * Needing a bound reference to a function that operates on a specific object</description>
     </item>
     
     <item>
       <title>Match the following</title>
-      <link>https://step.github.io/hello-world/exercises/match_the_following/</link>
+      <link>https://github.com/step/hello-world/exercises/match_the_following/</link>
       <pubDate>Tue, 30 Jan 2018 11:57:08 +0530</pubDate>
       
-      <guid>https://step.github.io/hello-world/exercises/match_the_following/</guid>
+      <guid>https://github.com/step/hello-world/exercises/match_the_following/</guid>
       <description>You are given two files. Each file contains different parts of the same string. The aim of this exercise is to match pairs of strings. For every string in the first file, there is a string in the second file whose first four characters are the same as the last four characters of the first.
 Sample of File 1:
 79oklw 381jstc 453usja 535bdxv  Sample of File 2:
@@ -114,10 +114,10 @@ jstc331 oklw737 bdxv211 usja514  Sample output:</description>
     
     <item>
       <title>Patterns</title>
-      <link>https://step.github.io/hello-world/exercises/patterns/</link>
+      <link>https://github.com/step/hello-world/exercises/patterns/</link>
       <pubDate>Tue, 30 Jan 2018 11:59:56 +0530</pubDate>
       
-      <guid>https://step.github.io/hello-world/exercises/patterns/</guid>
+      <guid>https://github.com/step/hello-world/exercises/patterns/</guid>
       <description>Text based patterns The aim of this exercise is to develop a library that can generate text based geometric patterns. There are several problems in this exercise. Do them one by one. As you attempt each, you might realise better ways of solving these.
 Do not reinvent unnecessary wheels
 1. Filled Rectangle
