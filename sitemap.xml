@@ -3,83 +3,83 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://example.org/objects/</loc>
+    <loc>https://step.github.io/hello-world/objects/</loc>
     <lastmod>2018-01-30T11:57:08+05:30</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/others/</loc>
+    <loc>https://step.github.io/hello-world/others/</loc>
     <lastmod>2018-01-30T11:57:08+05:30</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/exercises/</loc>
+    <loc>https://step.github.io/hello-world/exercises/</loc>
     <lastmod>2018-01-30T11:57:08+05:30</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/objects/why_objects/</loc>
+    <loc>https://step.github.io/hello-world/objects/why_objects/</loc>
     <lastmod>2018-01-29T22:58:16+05:30</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/objects/behaviour_in_an_object/</loc>
+    <loc>https://step.github.io/hello-world/objects/behaviour_in_an_object/</loc>
     <lastmod>2018-01-30T11:13:35+05:30</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/objects/constructors/</loc>
+    <loc>https://step.github.io/hello-world/objects/constructors/</loc>
     <lastmod>2018-01-30T11:16:11+05:30</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/objects/this/</loc>
+    <loc>https://step.github.io/hello-world/objects/this/</loc>
     <lastmod>2018-01-30T11:25:03+05:30</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/others/function_guidelines/</loc>
+    <loc>https://step.github.io/hello-world/others/function_guidelines/</loc>
     <lastmod>2018-01-30T11:38:43+05:30</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/others/varargs/</loc>
+    <loc>https://step.github.io/hello-world/others/varargs/</loc>
     <lastmod>2018-01-30T11:49:10+05:30</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/others/how_does_bind_work/</loc>
+    <loc>https://step.github.io/hello-world/others/how_does_bind_work/</loc>
     <lastmod>2018-01-30T11:51:36+05:30</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/others/call_apply_bind/</loc>
+    <loc>https://step.github.io/hello-world/others/call_apply_bind/</loc>
     <lastmod>2018-01-30T11:54:50+05:30</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/exercises/match_the_following/</loc>
+    <loc>https://step.github.io/hello-world/exercises/match_the_following/</loc>
     <lastmod>2018-01-30T11:57:08+05:30</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/exercises/patterns/</loc>
+    <loc>https://step.github.io/hello-world/exercises/patterns/</loc>
     <lastmod>2018-01-30T11:59:56+05:30</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/categories/</loc>
+    <loc>https://step.github.io/hello-world/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/</loc>
+    <loc>https://step.github.io/hello-world/</loc>
     <lastmod>2018-01-29T22:58:16+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/</loc>
+    <loc>https://step.github.io/hello-world/tags/</loc>
     <priority>0</priority>
   </url>
   
