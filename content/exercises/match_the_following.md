@@ -41,6 +41,6 @@ There are two sets of files provided. The first set consists of a small data set
 
 _Right click and save the link._
 
-[Test Files For Match The Following]({{< ref "/data/match_data.tar.gz" >}})
+[Test Files For Match The Following](/data/match_data.tar.gz)
 
 Write your program and test it with the smaller set before you test it with the larger set.
