@@ -22,7 +22,7 @@ let a=5;
 
 The best way to understand `this` is to simply try a few things out. Open a node repl and simply type in `this` and press enter. What do you get? You should get a screenful of strange things. These strange things are key value pairs, much like any other object. You might get something like this
 
-![global object]({{< ref "/images/global_object.png" >}})
+![global object](/images/global_object.png)
 
 _Note: Colours might be different/absent based on your settings_
 
@@ -184,7 +184,7 @@ A calling context is simply the context that Javascript has called a function wi
 
 A picture is worth a thousand words, so here:
 
-![Calling Context]({{< ref "/images/calling_context.png" >}})
+![Calling Context](/images/calling_context.png)
 
 _Note: The above image was generated using [Python Tutor](http://www.pythontutor.com/live.html#mode=edit)_
 
