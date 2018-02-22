@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Exercises on Hello World</title>
+    <link>http://example.org/exercises/</link>
+    <description>Recent content in Exercises on Hello World</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 30 Jan 2018 11:57:08 +0530</lastBuildDate>
+    
+	<atom:link href="http://example.org/exercises/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Match the following</title>
+      <link>http://example.org/exercises/match_the_following/</link>
+      <pubDate>Tue, 30 Jan 2018 11:57:08 +0530</pubDate>
+      
+      <guid>http://example.org/exercises/match_the_following/</guid>
+      <description>You are given two files. Each file contains different parts of the same string. The aim of this exercise is to match pairs of strings. For every string in the first file, there is a string in the second file whose first four characters are the same as the last four characters of the first.
+Sample of File 1:
+79oklw 381jstc 453usja 535bdxv  Sample of File 2:
+jstc331 oklw737 bdxv211 usja514  Sample output:</description>
+    </item>
+    
+    <item>
+      <title>Patterns</title>
+      <link>http://example.org/exercises/patterns/</link>
+      <pubDate>Tue, 30 Jan 2018 11:59:56 +0530</pubDate>
+      
+      <guid>http://example.org/exercises/patterns/</guid>
+      <description>Text based patterns The aim of this exercise is to develop a library that can generate text based geometric patterns. There are several problems in this exercise. Do them one by one. As you attempt each, you might realise better ways of solving these.
+Do not reinvent unnecessary wheels
+1. Filled Rectangle
+Generate a filled rectangle of MxN dimension. Additionally the user should be able to specify the character used to fill the rectangle.</description>
+    </item>
+    
+  </channel>
+</rss>

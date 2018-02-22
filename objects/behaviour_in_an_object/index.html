@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        
+	Defining Behaviour In An Object
+
+    </title>
+    <link rel="stylesheet" href="/css/index.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+    <h1 class="header">
+    <a href="/"> Hello World </a>
+</h1>
+
+    
+	<h1 class="header"> Defining Behaviour In An Object </h1>
+	
+
+<p>If you have read the post <a href="/why_objects">Why Objects?</a>, then you will understand the need for tying data and behaviour together. If you haven&rsquo;t read it, please do so before you proceed any further.</p>
+
+<p>Kavita and John have understood that it is necessary to tie data and behaviour together. One manner of doing it is to define the behaviour when you create the object.</p>
+
+<pre><code class="language-javascript">var areaOfSquare=function() {
+  return this.length * this.length;
+}
+
+var createSquare=function(length) {
+  let square={length:length}
+  square.area=areaOfSquare;
+  return square;
+}
+
+exports.createSquare=createSquare;
+</code></pre>
+
+<p>This can be used very easily now.</p>
+
+<pre><code class="language-javascript">var tile=createSquare(10);
+console.log(tile.area());
+
+var chocolate=createSquare(2);
+console.log(chocolate.area());
+
+var squares=[tile,chocolate];
+
+var areas=squares.map((square) =&gt; square.area());
+
+console.log(areas);
+</code></pre>
+
+<p>As you can see, this cleans things up considerably. However, observe that we had to manually associate the object&rsquo;s <code>area</code> property with the function <code>areaOfSquare</code> in <code>createSquare</code>. Also, we had to manually create an empty object <code>square</code> and associate the <code>length</code> property that way as well.</p>
+
+<h4 id="problems-with-this-approach">Problems with this approach</h4>
+
+<p>This is alright when there is just one property and one function. But if we had many, which is often the case, this approach has the same problem as with all manual wiring scenarios. You can easily cause a typing mistake.</p>
+
+<p>For example:</p>
+
+<pre><code class="language-javascript">var addSong=function(song) {
+  this.songs.push(song);
+}
+
+var totalPlayTime=function() {
+  return this.songs.reduce((playTime,song) =&gt; playTime+song.length);
+}
+
+var removeSong=function(song) {
+  // code to remove song
+}
+
+var shuffle=function() {
+  // code to shuffle
+}
+
+var createPlaylist=function() {
+  let playList={songs:[]};
+  playList.addSong=addSong;
+  playList.totalPlaytime=totalPlayTime;
+  playList.removeSong=removesong;
+  playList.shuffle=shuffle;
+}
+</code></pre>
+
+<p>See if you can spot any problems in the example above. There&rsquo;s a very subtle problem that has serious consequences. Look closely.</p>
+
+<hr />
+
+<p>Another disadvantage is that behaviours are now listed as properties. Consider the prior example of creating squares.</p>
+
+<pre><code class="language-javascript">var tile=createSquare(10);
+console.log(tile);
+</code></pre>
+
+<p>produces</p>
+
+<pre><code class="language-javascript">{ length: 10, area: [Function: areaOfSquare] }
+</code></pre>
+
+<p>While this doesn&rsquo;t directly affect us, it exposes more than it needs to. For instance, one now knows that the original function that the <code>area</code> property is bound to is <code>areaOfSquare</code> and they might try to access that function directly.</p>
+
+<p>We all know you have kidneys, hearts and other organs, but if anybody other than you had access to it, a lot of havoc can occur. It helps to prevent people from using functions in a manner other than advertised or recommended.</p>
+
+<h4 id="what-do-we-need">What do we need?</h4>
+
+<p>It would be helpful if the language had a mechanism where we could automatically do the following:</p>
+
+<ul>
+<li>Automatically create a new object and use <code>this</code> to refer to that object</li>
+<li>Separate properties from behaviour and not list behaviour as properties.</li>
+<li>Automatically wire function names up to the desired behaviour name without having to explicitly mention it.</li>
+</ul>
+
+<p>It turns out that Javascript does allow us to do this!</p>
+
+<p>Read all about it under <a href="/constructors">constructors</a>.</p>
+
+
+</body>
+</html>

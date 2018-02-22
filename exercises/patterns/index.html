@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        
+	Patterns
+
+    </title>
+    <link rel="stylesheet" href="/css/index.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+    <h1 class="header">
+    <a href="/"> Hello World </a>
+</h1>
+
+    
+	<h1 class="header"> Patterns </h1>
+	
+
+<h4 id="text-based-patterns">Text based patterns</h4>
+
+<p>The aim of this exercise is to develop a library that can generate text based geometric patterns. There are several problems in this exercise. Do them one by one. As you attempt each, you might realise better ways of solving these.</p>
+
+<p><em>Do not reinvent unnecessary wheels</em></p>
+
+<p><strong>1. Filled Rectangle</strong></p>
+
+<p>Generate a filled rectangle of MxN dimension. Additionally the user should be able to specify the character used to fill the rectangle.</p>
+
+<pre><code class="language-js">// 1 x 1, *
+*
+
+// 2 x 1, *
+**
+
+// 1 x 2, +
++
++
+
+// 2 x 2, -
+--
+--
+
+// 20 x 7, A
+AAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAA
+</code></pre>
+
+<hr />
+
+<p><strong>2. Hollow Rectangle</strong></p>
+
+<p>Generate a hollow rectangle of MxN dimension. Additionally the user should be able to specify the character that outlines the rectangle.</p>
+
+<pre><code class="language-js">// 1 x 1, *
+*
+
+// 2 x 1, *
+**
+
+// 1 x 2, +
++
++
+
+// 2 x 2, -
+--
+--
+
+// 3 x 3, *
+***
+* *
+***
+
+// 20 x 7, +
+++++++++++++++++++++
++                  +
++                  +
++                  +
++                  +
++                  +
+++++++++++++++++++++
+</code></pre>
+
+<hr />
+
+<p><strong>3. Cyclical Lines</strong></p>
+
+<p>Generate N lines of length M. The text used to generate the line should be cycled through a list of characters</p>
+
+<pre><code class="language-js">// 3 x 1,+,-
++
+-
++
+
+// 2 x 4,+,-
+++++
+----
+
+// 3 x 3, +,-,*
++++
+---
+***
+
+// 5 x 3, +,-,*
++++
+---
+***
++++
+---
+
+// 4 x 1, +
++
++
++
++
+
+</code></pre>
+
+<hr />
+
+<p><strong>4. Left Aligned Triangle</strong></p>
+
+<p>Generate a left-aligned right angled triangle of size N as follows:</p>
+
+<pre><code class="language-js">// 2,-
+-
+--
+
+// 3,+
++
+++
++++
+
+// 6, *
+*
+**
+***
+****
+*****
+******
+
+</code></pre>
+
+<hr />
+
+<p><strong>5. Right Aligned Triangle</strong></p>
+
+<p>Generate a right-aligned right angled triangle of size N as follows:</p>
+
+<pre><code class="language-js">// 2,-(the empty line below is simply to differentiate. Your output should not contain it)
+
+ -
+--
+
+// 3,+(the empty line below is simply to differentiate. Your output should not contain it)
+
+  +
+ ++
++++
+
+// 6, * (the empty line below is simply to differentiate. Your output should not contain it)
+
+     *
+    **
+   ***
+  ****
+ *****
+******
+
+</code></pre>
+
+<hr />
+
+<p><strong>6. Left Aligned Hollow Triangle</strong></p>
+
+<p>Generate a left-aligned right angled hollow triangle of size N as follows:</p>
+
+<pre><code class="language-js">// 2,-
+-
+--
+
+// 3,+
++
+++
++++
+
+// 4,+
++
+++
++ +
+++++
+
+// 6, *
+*
+**
+* *
+*  *
+*   *
+******
+
+</code></pre>
+
+<hr />
+
+<p><strong>7. Right Aligned Hollow Triangle</strong></p>
+
+<p>Generate a right-aligned right angled hollow triangle of size N as follows:</p>
+
+<pre><code class="language-js">// 2,-(the empty line below is simply to differentiate. Your output should not contain it)
+
+ -
+--
+
+// 3,+(the empty line below is simply to differentiate. Your output should not contain it)
+
+  +
+ ++
++++
+
+// 4,+(the empty line below is simply to differentiate. Your output should not contain it)
+
+   +
+  ++
+ + +
+++++
+
+// 6, * (the empty line below is simply to differentiate. Your output should not contain it)
+
+     *
+    **
+   * *
+  *  *
+ *   *
+******
+
+</code></pre>
+
+<hr />
+
+<p><strong>8. Diamond</strong></p>
+
+<p>Generate a diamond of size N and the specified character. N specifies the widest part of the diamond(the middle line). N needs to be odd. If an even number is supplied, round it <em>up</em> to the nearest odd.</p>
+
+<pre><code class="language-js">// 3,+
+ +
++++
+ +
+
+// 5,*
+  *
+ ***
+*****
+ ***
+  *
+
+// 4,* (round up to 5)
+  *
+ ***
+*****
+ ***
+  *
+
+</code></pre>
+
+<hr />
+
+<p><strong>9. Hollow Diamond</strong></p>
+
+<p>Generate a hollow diamond of size N and the specified character. N specifies the widest part of the diamond(the middle line). N needs to be odd. If an even number is supplied, round it <em>up</em> to the nearest odd.</p>
+
+<pre><code class="language-js">// 3,+
+ +
++ +
+ +
+
+// 5,*
+  *
+ * *
+*   *
+ * *
+  *
+
+// 4,* (round up to 5)
+  *
+ * *
+*   *
+ * *
+  *
+
+</code></pre>
+
+<hr />
+
+<p><strong>10. Angled Hollow Diamond</strong></p>
+
+<p>Generate a hollow diamond whose edges are sloped. Unlike the previous diamond examples, this diamond only uses the character specified on the tips of the diamond.</p>
+
+<pre><code class="language-js">// 3,-
+ -
+- -
+ -
+
+// 5,+
+  +
+ / \
++   +
+ \ /
+  +
+
+// 7,*
+   *
+  / \
+ /   \
+*     *
+ \   /
+  \ /
+   *
+
+</code></pre>
+
+<hr />
+
+
+</body>
+</html>

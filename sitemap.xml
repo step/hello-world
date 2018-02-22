@@ -3,12 +3,78 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://example.org/objects/</loc>
+    <lastmod>2018-01-30T11:57:08+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/others/</loc>
+    <lastmod>2018-01-30T11:57:08+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/exercises/</loc>
+    <lastmod>2018-01-30T11:57:08+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/objects/why_objects/</loc>
+    <lastmod>2018-01-29T22:58:16+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/objects/behaviour_in_an_object/</loc>
+    <lastmod>2018-01-30T11:13:35+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/objects/constructors/</loc>
+    <lastmod>2018-01-30T11:16:11+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/objects/this/</loc>
+    <lastmod>2018-01-30T11:25:03+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/others/function_guidelines/</loc>
+    <lastmod>2018-01-30T11:38:43+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/others/varargs/</loc>
+    <lastmod>2018-01-30T11:49:10+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/others/how_does_bind_work/</loc>
+    <lastmod>2018-01-30T11:51:36+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/others/call_apply_bind/</loc>
+    <lastmod>2018-01-30T11:54:50+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/exercises/match_the_following/</loc>
+    <lastmod>2018-01-30T11:57:08+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/exercises/patterns/</loc>
+    <lastmod>2018-01-30T11:59:56+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>http://example.org/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://example.org/</loc>
+    <lastmod>2018-01-29T22:58:16+05:30</lastmod>
     <priority>0</priority>
   </url>
   

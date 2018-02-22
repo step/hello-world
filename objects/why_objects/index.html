@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        
+	Why Objects
+
+    </title>
+    <link rel="stylesheet" href="/css/index.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+    <h1 class="header">
+    <a href="/"> Hello World </a>
+</h1>
+
+    
+	<h1 class="header"> Why Objects </h1>
+	
+
+<h4 id="the-world-as-it-is-today">The world as it is today</h4>
+
+<p>Let us look at how the world exists without objects.</p>
+
+<p>John and Kavita are two people who are writing some code.</p>
+
+<p>John wants to calculate the area of a square. So he writes this fancy function.</p>
+
+<pre><code class="language-javascript">var areaOfSquare=function(square) {
+  return square.length * square.length;
+};
+
+exports.areaOfSquare=areaOfSquare;
+</code></pre>
+
+<p>You can see that his function expects an object that has the length property in it. John being kind, shares his code by exporting his function.</p>
+
+<p>Kavita comes along, finds that this is exactly what she needs and uses his function.</p>
+
+<pre><code class="language-javascript">let square={length:10};
+console.log(areaOfSquare(square));
+
+let tile={lenght:20};
+console.log(areaOfSquare(tile));
+</code></pre>
+
+<p>Kavita is excited and runs her code, only to find that while the first square&rsquo;s area is calculated correctly, the second square, indicated by the variable tile, produces <code>NaN</code>.</p>
+
+<pre><code class="language-javascript">100
+NaN
+</code></pre>
+
+<p>Observe closely and you will find that Kavita made a spelling mistake in the definition of tile and used <code>lenght</code> instead of <code>length</code>. Kavita quickly realises that there needs to be a consistent way of creating a square object. The possibility of making typing mistakes is high.</p>
+
+<p>She complains to John about this problem. But being more than just someone who complains, she comes up with a solution.</p>
+
+<p>She writes the following function.</p>
+
+<pre><code class="language-javascript">var createSquare=function(length) {
+  return {length:length};
+}
+
+exports.createSquare=createSquare;
+</code></pre>
+
+<p>This is beautiful! It works! Every time one wants to make a square object, they call this function. Kavita is happy. For now. After a while, she discovers something interesting. She was writing some code and something strange happened. Here&rsquo;s what she wrote.</p>
+
+<pre><code class="language-javascript">var tile=createSquare(20);
+var chocolate=createSquare(10);
+
+var squares=[tile,chocolate];
+
+console.log(&quot;The area of tile is&quot;,areaOfSquare(squares));
+</code></pre>
+
+<p>Observe this very closely. The <code>areaOfSquare</code> function expects an object whose <code>length</code> property is defined. <code>squares</code> is a list that has a <code>length</code> property.</p>
+
+<p>Kavita wanted to pass <code>tile</code> to <code>areaOfSquare</code>, but she mistakenly passed <code>squares</code>. This worked because <code>squares</code> is a list and has the property length. Now this is a problem, because any object that has the property <code>length</code> can be passed to areaOfSquare and will be calculated. As long as that property is a number, the result will even seem sensible.</p>
+
+<p>John and Kavita realise that one of the problems of functions is that when they operate on data, they expect the data to come from the outside. This is not safe. Anybody can pass anything.</p>
+
+<p>Instead, what if there were a way where the data and the functions that operated on it stayed together. Even better, what if that function knew how to get the data it needed instead of relying on people to pass it the data?</p>
+
+<h4 id="can-bind-help">Can bind help?</h4>
+
+<p>Please read about <a href="how_does_bind_work">how bind works</a> if you haven&rsquo;t already. It is important and necessary for the rest of this section.</p>
+
+<p>Kavita and John are still not sure how to fix the problem of a method expecting its arguments to have the property <code>length</code>. Having discovered <code>bind</code> however, they decide to try something.</p>
+
+<p>Consider a new definition of <code>createSquare</code> now.</p>
+
+<pre><code class="language-javascript">const areaOfSquare=function() {
+  return this.length * this.length;
+}
+</code></pre>
+
+<pre><code class="language-javascript">let tile=createSquare(10);
+let areaOfTile=areaOfSquare.bind(tile);
+
+console.log(areaOfTile());
+</code></pre>
+
+<p>produces</p>
+
+<pre><code class="language-javascript">100
+</code></pre>
+
+<p>Yay! This works. Or does it? Let us see.</p>
+
+<p>Kavita can still bind a list to <code>areaOfSquare</code>.</p>
+
+<pre><code class="language-javascript">let numbers=[1,2,3];
+
+let areaOfNumbers=areaOfSquare.bind(numbers);
+console.log(areaOfNumbers());
+</code></pre>
+
+<p>produces</p>
+
+<pre><code class="language-javascript">9
+</code></pre>
+
+<p>Nothing prevents us from doing this. Which means, the behaviour <code>areaOfSquare</code> still doesn&rsquo;t have anything to do with a square. It simply works on a property called <code>length</code>.</p>
+
+<p>This problem simply can&rsquo;t be solved unless we somehow ensure that the function <code>areaOfSquare</code> knows only about a square. Importantly, this bind should happen automatically.</p>
+
+<h4 id="so-why-should-data-and-behaviour-be-bound-together">So, why should data and behaviour be bound together?</h4>
+
+<p>Not having a system that automatically ties data and behaviour does the following:</p>
+
+<ul>
+<li>Expects us to know how to define data, which might cause bugs.
+
+<ul>
+<li><code>{length:10}</code> vs <code>{lenght:10}</code></li>
+</ul></li>
+<li>Allows unrelated behaviour to be applied on unrelated data
+
+<ul>
+<li>calling <code>areaOfSquare</code> with a list</li>
+</ul></li>
+<li>Forces us to manually tie data and behaviour, thus increasing the possibility of bugs.
+
+<ul>
+<li>using <code>bind</code> or some other such method</li>
+</ul></li>
+<li>Even manually binding doesn&rsquo;t solve problems
+
+<ul>
+<li>Every new instance of an object has to be bound again to the behaviour desired.</li>
+</ul></li>
+</ul>
+
+<p>It would be good to read how to <a href="behaviour_in_an_object">define behaviour in an object</a> next.</p>
+
+
+</body>
+</html>

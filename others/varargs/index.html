@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        
+	Varargs
+
+    </title>
+    <link rel="stylesheet" href="/css/index.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+    <h1 class="header">
+    <a href="/"> Hello World </a>
+</h1>
+
+    
+	<h1 class="header"> Varargs </h1>
+	
+
+<h4 id="the-magic-of-variable-length-arguments">The magic of variable length arguments</h4>
+
+<p>Javascript lets us call function with any number of arguments. This seems powerful, but in order to make use of this ability, we need to know how many arguments have been passed and we need to be able to access them individually.</p>
+
+<p>There are two ways to achieve this. One is to use the <code>arguments</code> object. The other is to use the <code>...</code> syntax. That isn&rsquo;t a spelling mistake. It is actually the <a href="https://en.wikipedia.org/wiki/Ellipsis">ellipsis</a> operator.</p>
+
+<h4 id="using-arguments">Using <code>arguments</code></h4>
+
+<p>Javascript has a special object called <code>arguments</code> available to you within all of your functions. This special object is automatically filled with all the values of the arguments that you passed. The <code>arguments</code> object is not an array.</p>
+
+<p>Enough talking. Here is some magic</p>
+
+<pre><code class="language-javascript">const magic=function() {
+  console.log(&quot;You entered&quot;,arguments.length,&quot;arguments&quot;);
+  for (var i = 0; i &lt; arguments.length; i++) {
+    console.log(i+1,arguments[i]);
+  }
+}
+
+magic('a');
+console.log(&quot;--&quot;);
+magic(&quot;hello&quot;,&quot;world&quot;);
+console.log(&quot;--&quot;);
+magic(10,9,8);
+</code></pre>
+
+<p>produces</p>
+
+<pre><code class="language-javascript">You entered 1 arguments
+1 'a'
+--
+You entered 2 arguments
+1 'hello'
+2 'world'
+--
+You entered 3 arguments
+1 10
+2 9
+3 8
+</code></pre>
+
+<p>Wow! That really is some magic. This function knows everything about the arguments you passed! As you can see, this is useful. <code>arguments</code> has some other features that you can read about in detail <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments">here</a>.</p>
+
+<p>The one important thing to note here is that the <code>arguments</code> object is not an <code>Array</code>. Therefore you may not do things with it like you can with arrays. No <code>map</code>, <code>filter</code> or <code>slice</code> for instance. The above link should detail this better.</p>
+
+<h4 id="using">Using <code>...</code></h4>
+
+<p>Another way to deal with a variable number of arguments is to use the <code>...</code> operator.</p>
+
+<pre><code class="language-javascript">const magic=function(...args) {
+  console.log(&quot;You entered&quot;,args.length,&quot;arguments&quot;);
+  for (var i = 0; i &lt; args.length; i++) {
+    console.log(i+1,args[i]);
+  }  
+}
+</code></pre>
+
+<p>Running the above produces the exact same output as the <code>magic</code> function in the previous section. The main thing to note here is that the <code>args</code> variable is an array. Which means, you can use all the array methods that are available such as <code>map</code>, <code>filter</code>, <code>slice</code> et al.</p>
+
+<p>While both the ways are used, <code>arguments</code> is commonly used when none of the arguments are known. <code>...</code> is used when the first few arguments are known. Also, <code>arguments</code> is useful when you need more information such as who called that function.</p>
+
+<p>The main difference to be noted here is that <code>arguments</code> is an object whereas <code>...args</code> is an array.</p>
+
+
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        
+	Constructors
+
+    </title>
+    <link rel="stylesheet" href="/css/index.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+    <h1 class="header">
+    <a href="/"> Hello World </a>
+</h1>
+
+    
+	<h1 class="header"> Constructors </h1>
+	
+
+<p>Please read <a href="/why_objects">Why Objects?</a>, <a href="/how_does_bind_work">How Bind Works</a> and <a href="/behaviour_in_an_object">How To Define Behaviour In An Object</a> before you proceed any further.</p>
+
+<p>We have now firmly established the need for an automated mechanism to create objects and associate behaviours with it. As mentioned earlier, Javascript has the ability to do so. We achieve this by using a concept called constructors.</p>
+
+<h4 id="what-is-a-constructor">What is a constructor?</h4>
+
+<p>A constructor is simply a mechanism that creates a desired object. You may define what you want to initialise that object with as a part of the constructor. For now, let us keep behaviour aside and look at some examples involving only properties and data.</p>
+
+<p>We have seen an example before to create a square. However, since we weren&rsquo;t using Javascript&rsquo;s mechanism to construct, we wrote it as follows:</p>
+
+<pre><code class="language-javascript">var createSquare=function(length) {
+  let square={length:length};
+  // keep behaviour aside for now
+  return square;
+}
+
+var tile=createSquare(10);
+</code></pre>
+
+<p>Now, let us look at how to write this using Javascript&rsquo;s mechanism for dealing with constructors.</p>
+
+<pre><code class="language-javascript">// Square is the constructor here
+var Square=function(length) {
+  this.length=length;
+}
+
+var tile=new Square(10);
+console.log(tile);
+</code></pre>
+
+<p>produces</p>
+
+<pre><code class="language-javascript">Square { length: 10 }
+</code></pre>
+
+<p>Immediately, we see a few things.</p>
+
+<p>First, the function is named <code>Square</code> with a capital <code>S</code> and not <code>createSquare</code>. It is convention, not a rule, to capitalise constructors. The constructor <code>Square</code> is very similar to the way we defined <code>createSquare</code>, but there are some other obvious differences such as the usage of the keyword <code>this</code>, no return values and no explicit creation of an object.</p>
+
+<p>The most interesting thing here though is the use of the <code>new</code> keyword while creating <code>tile</code>.</p>
+
+<p>What exactly is happening here? Let us break it down.</p>
+
+<ol>
+<li><code>new</code> first creates an empty object.</li>
+<li><code>new</code> then binds the function <code>Square</code> to the empty object created in step 1.</li>
+<li>It calls the newly bound function.</li>
+<li><code>Square</code> now executes with the <code>this</code> object set to the empty object from step 1.</li>
+<li><code>new</code> eventually returns the empty object from step 1 which by now has the property <code>length</code> and is thus no longer empty.</li>
+</ol>
+
+<p>Take the time and re-read this as many times in order to understand the process.</p>
+
+<h4 id="behaviour">Behaviour</h4>
+
+<p>We have been ignoring talking about behaviour for a while. In order to understand how to wire up behaviour, we have to go over a concept called <code>prototype</code>.</p>
+
+<p>But, before that, a small confession.</p>
+
+<p><strong>Functions are objects!</strong></p>
+
+<p>In Javascript, functions are objects. At least, they behave like objects. You can set properties on them like you could on any other object. For instance:</p>
+
+<pre><code class="language-javascript">var Square=function(length) {
+  this.length=length;
+}
+
+Square.colour=&quot;green&quot;;
+
+console.log(Square);
+console.log(Square.colour);
+</code></pre>
+
+<p>produces</p>
+
+<pre><code class="language-javascript">{ [Function: Square] colour: 'green' }
+green
+</code></pre>
+
+<p><strong>OMG!</strong></p>
+
+<p>What kind of <em>magic</em> is this?!</p>
+
+<p>No magic at all. This has always been true. Functions are objects in Javascript. Which means you can set properties on them like you could on any other object.</p>
+
+<p>Want to set <code>colour</code> on a function? Go right ahead. It isn&rsquo;t particularly useful to set a property like that on functions.</p>
+
+<p>However, there is a property that is useful. That property is called <code>prototype</code>.</p>
+
+<p>If the <code>prototype</code> property is set on a function, then Javascript knows to use it as a template or a blueprint of behaviour when creating objects.</p>
+
+<p>In other words, when you use the keyword <code>new</code>, then Javascript looks up the constructor you have provided. If the constructor has the property <code>prototype</code>, then it creates the object with the behaviour detailed in that property.</p>
+
+<p>Talking about code is like dancing about architecture. So let us look at an example:</p>
+
+<pre><code class="language-javascript">var Square=function(length) {
+  this.length=length;
+}
+
+Square.prototype = {
+  area:function() {return this.length*this.length}
+}
+
+var tile=new Square(10);
+console.log(tile.area());
+</code></pre>
+
+<p>produces</p>
+
+<pre><code class="language-javascript">100
+</code></pre>
+
+<p>Works like a charm!</p>
+
+<h4 id="prototype">Prototype</h4>
+
+<p>We&rsquo;ve seen <code>prototype</code>. However, we need to understand what it is and how it works.</p>
+
+<p>Prototype is a property. Its value is simply an object in itself.</p>
+
+<p>For instance:</p>
+
+<pre><code class="language-javascript">var Square=function(length) {
+  this.length=length;
+}
+
+Square.prototype={};
+Square.prototype.colour=&quot;green&quot;;
+Square.prototype.age=100;
+Square.prototype.area=function(){
+  return this.length*this.length;
+}
+console.log(Square.prototype);
+</code></pre>
+
+<p>produces</p>
+
+<pre><code class="language-javascript">{ colour: 'green', age: 100, area: [Function] }
+</code></pre>
+
+<p>You will see that we initialised <code>Square.prototype</code> as an empty object here and added some properties to it such as <code>colour</code>,<code>age</code>, and <code>area</code>.</p>
+
+<p>Again, apart from <code>area</code>, none of these properties are really useful. Notice, the value of any of <code>prototype</code>&rsquo;s properties can be functions. Just like any other object in Javascript.</p>
+
+<p>We can define the <code>prototype</code> object in two different ways:</p>
+
+<p><strong>Method 1</strong></p>
+
+<pre><code class="language-javascript">var Square=function(length) {
+  this.length=length;
+}
+
+Square.prototype.area=function(){
+  return this.length*this.length;
+}
+
+Square.prototype.perimeter=function(){
+  return 4 * this.length;
+}
+
+</code></pre>
+
+<p>Observe closely. There&rsquo;s something interesting going on here. <code>Square.prototype.area</code> implies that <code>Square.prototype</code> is an object. But we didn&rsquo;t define it. It should have complained.</p>
+
+<p>So how does this work. Try defining any function in Javascript and try accessing its <code>prototype</code> property and you will see that Javascript inserts a <code>prototype</code> property by default into functions.</p>
+
+<p><strong>Method 2</strong></p>
+
+<pre><code class="language-javascript">var Square=function(length) {
+  this.length=length;
+}
+
+Square.prototype={
+  area:function(){
+    return this.length*this.length;
+  },
+  perimeter:function(){
+    return 4 * this.length;
+  }
+}
+</code></pre>
+
+<p>This method simply defines a fresh object with key value pairs. This <code>prototype</code> has two properties <code>area</code> and <code>perimeter</code>, both of which have functions for values. It is important to note the comma that comes between both properties. Remember, <code>prorotype</code> is an object. So when we define its properties as key-value pairs, we have to separate them with a comma.</p>
+
+<p>Both methods are equally valid and any preference is primarily stylistic. The second method is more common.</p>
+
+<p>We will shortly learn another technique that will make it even easier to define these things.</p>
+
+
+</body>
+</html>

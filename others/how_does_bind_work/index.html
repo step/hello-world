@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        
+	How does bind work ?
+
+    </title>
+    <link rel="stylesheet" href="/css/index.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+    <h1 class="header">
+    <a href="/"> Hello World </a>
+</h1>
+
+    
+	<h1 class="header"> How does bind work ? </h1>
+	
+
+<h4 id="what-is-bind">What is <code>bind</code>?</h4>
+
+<p>The English word <a href="https://www.merriam-webster.com/dictionary/bind">bind</a> is a verb that means to make secure by tying.</p>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind">Function.prototype.bind</a> is a function that can do very useful things. Assuming that you understand the concept of <code>this</code> in Javascript, bind is very easy to understand. <code>bind</code> simply ties an object to a function, so that the function assumes <code>this</code> to refer to the object when it executes.</p>
+
+<h4 id="the-way-bind-works">The way <code>bind</code> works.</h4>
+
+<p>Consider this function:</p>
+
+<pre><code class="language-javascript">const areaOfSquare=function() {
+  return this.length * this.length;
+}
+</code></pre>
+
+<p>This function doesn&rsquo;t expect any input. Instead, it relies on the <code>this</code> object. It expects the <code>this</code> object to have the property length defined on it.</p>
+
+<p>If we just call it, then it will try to use the length defined in a global object or where you are calling it from:</p>
+
+<pre><code class="language-javascript">this.length=10;
+let squareArea=areaOfSquare();
+console.log(squareArea);
+</code></pre>
+
+<p>produces:</p>
+
+<pre><code class="language-javascript">100
+</code></pre>
+
+<p>This &ldquo;<code>magic</code>&rdquo; returns a valid value, in this case <code>100</code> because length has been defined on the global object. <code>areaOfSquare</code> tries to figure out what <code>this</code> means and uses the global object as <code>this</code>.</p>
+
+<p>However, we can do something interesting with bind here.</p>
+
+<pre><code class="language-javascript">var tile={length:10};
+var areaOfTile=areaOfSquare.bind(tile);
+
+console.log(areaOfTile());
+</code></pre>
+
+<p>produces:</p>
+
+<pre><code class="language-javascript">100
+</code></pre>
+
+<p>This also works magically! How? The answer lies with bind. <code>bind</code> ties the function <code>areaOfSquare</code> to the object <code>tile</code>. <code>bind</code> then returns a new function, which in this case is assigned to <code>areaOfTile</code>. When <code>areaOfTile</code> is called, <code>this</code> refers to <code>tile</code> as it has been bound.</p>
+
+<p>So, <code>bind</code> simply binds a function to a given object and when the function is called, all references to <code>this</code> in that function, will now point to the object.</p>
+
+<p>It is important to remember that <code>bind</code> returns a reference to a new function and doesn&rsquo;t change the original function at all.</p>
+
+<p>For instance:</p>
+
+<pre><code class="language-javascript">const areaOfSquare=function() {
+  return this.length * this.length;
+}
+
+let tile={length:10};
+this.length=5;
+let areaOfTile=areaOfSquare.bind(tile);
+
+let tileArea=areaOfTile();
+let squareArea=areaOfSquare();
+
+console.log(tileArea);
+console.log(squareArea);
+</code></pre>
+
+<p>produces</p>
+
+<pre><code class="language-javascript">100
+25
+</code></pre>
+
+
+</body>
+</html>

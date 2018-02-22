@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        
+	What is this ?
+
+    </title>
+    <link rel="stylesheet" href="/css/index.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+    <h1 class="header">
+    <a href="/"> Hello World </a>
+</h1>
+
+    
+	<h1 class="header"> What is this ? </h1>
+	
+
+<blockquote>
+<p><em>But <code>this</code> is preposterous!<br/>Yes, it is.</em></p>
+</blockquote>
+
+<h4 id="what-is-this">What is <code>this</code>?</h4>
+
+<p><code>this</code> is a reference to some object. What does that mean? It means that <code>this</code> is not something that has an intrinsic value.</p>
+
+<p>Consider</p>
+
+<pre><code class="language-javascript">let a=5;
+</code></pre>
+
+<p><code>a=5</code> in the above example tells us that <code>a</code> has a value of <code>5</code>. Unlike <code>a</code>, <code>this</code> doesn&rsquo;t have a value of its own. Instead, it is simply a reference to some other object in memory.</p>
+
+<h4 id="the-global-object">The global object</h4>
+
+<p>The best way to understand <code>this</code> is to simply try a few things out. Open a node repl and simply type in <code>this</code> and press enter. What do you get? You should get a screenful of strange things. These strange things are key value pairs, much like any other object. You might get something like this</p>
+
+<p><img src="/images/global_object.png" alt="global object" /></p>
+
+<p><em>Note: Colours might be different/absent based on your settings</em></p>
+
+<p>The above screenshot represents what is called the global object. When you typed <code>this</code> into your node repl, it referred to this global object which currently holds all the context. What context, you might ask?</p>
+
+<p>Let us see.</p>
+
+<p>Try this:</p>
+
+<pre><code class="language-javascript">this.hero=&quot;goldie&quot;;
+this.villain=&quot;silvery&quot;;
+
+console.log(this.hero,&quot;is greater than&quot;,this.villain);
+</code></pre>
+
+<p>produces</p>
+
+<pre><code class="language-javascript">goldie is greater than silvery
+</code></pre>
+
+<p>Two things to note here.</p>
+
+<ol>
+<li>When you typed in <code>this.hero=&quot;goldie&quot;</code>, it didn&rsquo;t complain about <code>this</code> not being defined. Which means, <code>this</code> was already defined.</li>
+<li>If <code>this</code> didn&rsquo;t hold special meaning, you would think that this was just any other object.</li>
+</ol>
+
+<p>Now let us try this:</p>
+
+<pre><code class="language-javascript">console.log(hero,&quot;is greater than&quot;,villain);
+</code></pre>
+
+<p>produces</p>
+
+<pre><code class="language-javascript">goldie is greater than silvery
+</code></pre>
+
+<p>What sorcery is this?! We defined <code>this.hero</code> and <code>this.villain</code>. How did <code>hero</code> and <code>villain</code> get defined. After all, we put attributes into some object called <code>this</code>. How do <code>hero</code> and <code>villain</code> automatically get defined?</p>
+
+<p>We need to understand that there is a global object that node uses. This global object is referenced by <code>this</code>. Whenever we assign something to a variable, the variable gets defined within the global object.</p>
+
+<p>Let us try it the other way around</p>
+
+<pre><code class="language-javascript">sidekick=&quot;bronzy&quot;;
+console.log(this.sidekick,&quot;is also better than the villain&quot;);
+</code></pre>
+
+<p>produces</p>
+
+<pre><code class="language-javascript">bronzy is also better than the villain
+</code></pre>
+
+<p>This means, that the association is both ways. When we define something on <code>this</code> it becomes globally available and when we define something globally, it becomes an attribute in the global object.</p>
+
+<h4 id="what-else-is-in-the-global-object">What else is in the global object?</h4>
+
+<p>The global object contains references to several things apart from variables that we define globally. We have all used <code>console.log</code>. If you look at <code>console.log</code> and didn&rsquo;t know that <code>console</code> was something special in Javascript, you would think that <code>console</code> is an object.</p>
+
+<p>In fact, <code>console</code> is an object. Given that we never defined it, then it is likely that <code>console</code> is defined in the global object. Let us see.</p>
+
+<pre><code class="language-javascript">this.console
+</code></pre>
+
+<p>gives us</p>
+
+<pre><code class="language-javascript">Console {
+  log: [Function: bound log],
+  info: [Function: bound log],
+  warn: [Function: bound warn],
+  error: [Function: bound warn],
+  dir: [Function: bound dir],
+  time: [Function: bound time],
+  timeEnd: [Function: bound timeEnd],
+  trace: [Function: bound trace],
+  assert: [Function: bound assert],
+  Console: [Function: Console] }
+</code></pre>
+
+<p>Further, when we do the following, see what happens:</p>
+
+<pre><code class="language-javascript">this.console.log(&quot;Hello world&quot;);
+</code></pre>
+
+<p>produces</p>
+
+<pre><code class="language-javascript">Hello World
+</code></pre>
+
+<p>Not only is there a reference named <code>this.console.log</code>, but it works just like <code>console.log</code>. It works that way because it <em>is</em> the same.</p>
+
+<p>It is critical to note that <code>this.something</code> and <code>something</code> are only equivalent when <code>this</code> is the global object. That means, node will not do a lookup of variables, functions etc unless <code>this</code> is the global object.</p>
+
+<pre><code class="language-javascript">var Person=function(name) {
+  this.name=name;
+}
+
+Person.prototype.jump=function() {
+  console.log(name,&quot;is jumping&quot;);
+}
+
+Person.prototype.jumpTwice=function() {
+  jump();
+  jump();
+}
+
+let kavita=new Person(&quot;kavita&quot;);
+kavita.jumpTwice();
+</code></pre>
+
+<p>results in</p>
+
+<pre><code class="language-javascript">ReferenceError: jump is not defined
+</code></pre>
+
+<p>Why so? If you look at it, in the <code>jumpTwice</code> method, there is a reference to <code>jump</code>. The <code>this</code> object when <code>jumpTwice</code> is called is in fact the Person object and not the global object. Does javascript automatically know to call <code>kavita.jump()</code>? The answer is that it does not. It only does a lookup on the global object. It doesn&rsquo;t do lookup any other object. <code>jump</code> will be called only if it is defined in the global context. But that won&rsquo;t work, since we have a context. We don&rsquo;t want the whole world to jump when jump is called. We want only Kavita to jump.</p>
+
+<p>To make this work, we need to understand calling contexts.</p>
+
+<h4 id="calling-context">Calling context</h4>
+
+<p>To understand calling context, one must have read about <a href="/why_objects">why objects</a> and <a href="/constructors">constructors</a>. So brush up on that if you haven&rsquo;t already.</p>
+
+<p>Let us briefly go back to our <code>Square</code> example.</p>
+
+<pre><code class="language-javascript">var Square=function(length) {
+  this.length=length;
+}
+
+Square.prototype = {
+  area:function() {
+    return this.length*this.length
+  }
+}
+
+var tile=new Square(10);
+var areaOfTile=tile.area();
+</code></pre>
+
+<p>We all understand that when <code>new Square</code> is called, then a new empty object is bound to the Square function and is then called. At this point, when <code>this.length=length;</code> is executed, <code>this</code> refers to the empty object.</p>
+
+<p>Similarly, when <code>tile.area()</code> is called, Javascript similarly changes <code>this</code> to refer to the <code>tile</code> object and then calls <code>area</code>. So all references to <code>this</code> in the <code>area</code> method are simply references to what was placed before the <code>area</code> function.</p>
+
+<pre><code class="language-javascript">tile.area();  // Calling context in area is `tile`
+chocolate.perimeter(); // Calling context in perimeter is `chocolate`
+kavita.depositIntoAccount(200); // Calling context in depositIntoAccount is `kavita`
+</code></pre>
+
+<p>A calling context is simply the context that Javascript has called a function with. In the global context, this is the global object. In other cases, it is mostly the object to which that function belongs. Sometimes this is not the case as we will see later. But for the most part, as shown above the calling context is set to whoever/whatever made that call.</p>
+
+<p>A picture is worth a thousand words, so here:</p>
+
+<p><img src="/images/calling_context.png" alt="Calling Context" /></p>
+
+<p><em>Note: The above image was generated using <a href="http://www.pythontutor.com/live.html#mode=edit">Python Tutor</a></em></p>
+
+<p>As the image above illustrates, when we execute the code above, and when we eventually get to line number 7 that reads <code>return this.length * this.length</code>, we can see that <code>this</code> points to the same object that <code>tile</code> points to. Note the blue arrow and gray arrow that lead from <code>this</code> and <code>tile</code> respectively.</p>
+
+<p>I would highly recommend trying <a href="http://www.pythontutor.com/live.html#mode=edit">Python Tutor</a> for yourself. It will definitely help you grasp these concepts better.</p>
+
+
+</body>
+</html>

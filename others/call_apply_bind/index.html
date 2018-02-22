@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        
+	call, apply and bind
+
+    </title>
+    <link rel="stylesheet" href="/css/index.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+    <h1 class="header">
+    <a href="/"> Hello World </a>
+</h1>
+
+    
+	<h1 class="header"> call, apply and bind </h1>
+	
+
+<h3 id="the-many-ways-of-function-ing">The many ways of function-ing</h3>
+
+<p>Javascript offers many ways of <a href="http://www.dictionary.com/browse/invoke">invoking</a> a function. The most common way of course is to simply say its name and it shall show up. Just like a genie. But, sometimes, this common way doesn&rsquo;t work, because well, we have an uncommon situation.</p>
+
+<p>Here are some situations:
+* Not knowing how many arguments are passed into a function
+* Needing to invoke a function with a different calling context(<code>this</code>)
+* Needing a bound reference to a function that operates on a specific object</p>
+
+<p>If you don&rsquo;t understand the above, that&rsquo;s alright. Let us try and understand the various ways of invoking functions in Javascript.</p>
+
+<hr />
+
+<h4 id="call"><code>call</code></h4>
+
+<p>The <code>call</code> function has the following syntax in Javascript.</p>
+
+<blockquote>
+<p><em>function.call(thisArg, arg1, arg2, &hellip;)</em></p>
+</blockquote>
+
+<p>Consider this example:</p>
+
+<pre><code class="language-javascript">// Simple function to calculate the area of a square
+var area=function() {
+  return this.length * this.length;
+}
+
+// Different kinds of squares
+var tile={length:10};
+var chocolate={length:5};
+
+// areas of different kinds of squares
+var areaOfTile=area.call(tile);
+var areaOfChocolate=area.call(chocolate)
+
+console.log(&quot;Area of tile is&quot;,areaOfTile);
+console.log(&quot;Area of chocolate is&quot;,areaOfChocolate);
+</code></pre>
+
+<p>produces</p>
+
+<pre><code class="language-javascript">Area of tile is 100
+Area of chocolate is 25
+</code></pre>
+
+<p>This is very straightforward. The function <code>area</code> is being called first with <code>tile</code> as the calling context and in the second case, <code>chocolate</code> as the calling context. In other words, the <code>this</code> argument in both calls are <code>tile</code> and <code>chocolate</code> respectively. In fact, that is all call does. It simply invokes the function with the calling context provided as the first argument.</p>
+
+<p>What about other arguments? Let us see.</p>
+
+<pre><code class="language-javascript">// Function to tell if a person is older than a given age
+var isOlderThan=function(age) {
+  return this.age&gt;age;
+}
+
+// Two people
+var john={age:15}; // John lives in a country where the voting age is 18
+var kavita={age:21}; // Kavita lives in a country where the voting age is 20
+
+// Are they of voting age?
+var isJohnOfVotingAge=isOlderThan.call(john,18);
+var isKavitaOfVotingAge=isOlderThan.call(kavita,20);
+
+console.log(&quot;Is John eligible to vote:&quot;,isJohnOfVotingAge);
+console.log(&quot;Is Kavita eligible to vote:&quot;,isKavitaOfVotingAge);
+</code></pre>
+
+<p>produces</p>
+
+<pre><code class="language-javascript">Is John eligible to vote: false
+Is Kavita eligible to vote: true
+</code></pre>
+
+<p>This should be quite easy to understand. The second argument to <code>call</code> are simply <code>18</code> and <code>20</code> in each case respectively. Rememeber, <code>isOlderThan</code> takes a single argument, unlike <code>area</code> in the previous example. So, we need to pass the age argument as a part of <code>call</code>. Otherwise, the function will receive <code>undefined</code> as the argument and will return the value accordingly.</p>
+
+<p>Of course this will work with more than one argument too.</p>
+
+<pre><code class="language-javascript">// A function that evaluates if a person is within a specified age range
+var isAgeBetween=function(lowerLimit,upperLimit) {
+  return lowerLimit&lt;=this.age &amp;&amp; this.age&lt;=upperLimit;
+}
+
+// Two people
+var john={age:15};
+var kavita={age:21};
+
+// Are they teenagers?
+var isJohnATeenager=isAgeBetween.call(john,13,19);
+var isKavitaATeenager=isAgeBetween.call(kavita,13,19);
+
+console.log(&quot;John is a teenager:&quot;,isJohnATeenager);
+console.log(&quot;Kavita is a teenager:&quot;,isKavitaATeenager);
+</code></pre>
+
+<p>As you can see, <code>call</code> can work when the function being called accepts more than one argument as well.</p>
+
+<hr />
+
+<h4 id="apply"><code>apply</code></h4>
+
+<p>If you understood <code>call</code> above, then <code>apply</code> is going to be incredibly easy.</p>
+
+<p>Its signature is:</p>
+
+<blockquote>
+<p><em>function.apply(thisArg, [argsArray])</em></p>
+</blockquote>
+
+<p>You will see that the only difference in this function signature is that <code>apply</code> accepts only two arguments. If you remember, <code>call</code> accepts any number of arguments.</p>
+
+<p>You will also see that the first argument is a <code>thisArg</code>.</p>
+
+<p>In fact, the only difference is that <code>apply</code> expects an array of arguments. That is it. The rest of it is exactly the same.</p>
+
+<p>Let us use a previous example.</p>
+
+<pre><code class="language-javascript">// Simple function to calculate the area of a square
+var area=function() {
+  return this.length * this.length;
+}
+
+// Different kinds of squares
+var tile={length:10};
+var chocolate={length:5};
+
+// areas of different kinds of squares
+var areaOfTile=area.apply(tile);
+var areaOfChocolate=area.apply(chocolate)
+
+console.log(&quot;Area of tile is&quot;,areaOfTile);
+console.log(&quot;Area of chocolate is&quot;,areaOfChocolate);
+</code></pre>
+
+<p>produces</p>
+
+<pre><code class="language-javascript">Area of tile is 100
+Area of chocolate is 25
+</code></pre>
+
+<p>This works <em>exactly</em> as <code>call</code>. No differences when the function takes no arguments. Let us now try the second example from <code>call</code> but with <code>apply</code> instead.</p>
+
+<pre><code class="language-javascript">// Function to tell if a person is older than a given age
+var isOlderThan=function(age) {
+  return this.age&gt;age;
+}
+
+// Two people
+var john={age:15}; // John lives in a country where the voting age is 18
+var kavita={age:21}; // Kavita lives in a country where the voting age is 20
+
+// Are they of voting age?
+var isJohnOfVotingAge=isOlderThan.apply(john,18);
+var isKavitaOfVotingAge=isOlderThan.apply(kavita,20);
+
+console.log(&quot;Is John eligible to vote:&quot;,isJohnOfVotingAge);
+console.log(&quot;Is Kavita eligible to vote:&quot;,isKavitaOfVotingAge);
+</code></pre>
+
+<p>If you try running this, you will see something like this:</p>
+
+<pre><code class="language-javascript">TypeError: CreateListFromArrayLike called on non-object
+</code></pre>
+
+<p>What is happening here? Remember, <code>apply</code> expects an <em><strong>array</strong></em> of arguments.</p>
+
+<p>All we have to do is change the lines where we apply the function to read as follows:</p>
+
+<pre><code class="language-javascript">var isJohnOfVotingAge=isOlderThan.apply(john,[18]);
+var isKavitaOfVotingAge=isOlderThan.apply(kavita,[20]);
+</code></pre>
+
+<p>and everything will work as expected. We have now used <code>apply</code> by passing <code>18</code> and <code>20</code> inserted into arrays.</p>
+
+<p>All this is very fine, but does <code>apply</code> <em>really</em> have a use case beyond what is shown?</p>
+
+<p>Turns out it does.</p>
+
+<h4 id="a-good-usage-of-apply">A good usage of <code>apply</code></h4>
+
+<p>Consider a series of tests on <code>isOdd</code></p>
+
+<pre><code class="language-javascript">const isOdd=function(number) {
+  return number%2!=0;
+}
+
+const testEvenPositiveNumbers=function() {
+  assert.equal(false,isOdd(2))
+}
+
+const testEvenPositiveNumbers=function() {
+  assert.equal(true,isOdd(1))
+}
+
+const testEvenNegativeNumbers=function() {
+  assert.equal(false,isOdd(-2))
+}
+
+const testEvenNegativeNumbers=function() {
+  assert.equal(true,isOdd(-1))
+}
+
+const testZero=function() {
+  assert.equal(true,isOdd(0))
+}
+</code></pre>
+
+<p>This is fine, but it is too involved. All the functions are simply asserting against different expectations and arguments.</p>
+
+<p>What if we write a generic function that can test anything?</p>
+
+<pre><code class="language-javascript">const isOdd=function(number) {
+  return number%2!=0;
+}
+
+const testAnything=function(msg,expectation,fnName,argument) {
+  console.log(msg);
+  assert.equal(expectation,fnName(argument));
+}
+
+var tests=[
+  {msg:&quot;even positive numbers&quot;,expectation:false,fnName:isOdd,argument:2},
+  {msg:&quot;odd positive numbers&quot;,expectation:true,fnName:isOdd,argument:1},
+  {msg:&quot;even negative numbers&quot;,expectation:false,fnName:isOdd,argument:-2},
+  {msg:&quot;odd positive numbers&quot;,expectation:true,fnName:isOdd,argument:-1},
+  {msg:&quot;zero&quot;,expectation:true,fnName:isOdd,argument:0}
+];
+
+tests.forEach(function(test){
+  testAnything(test.msg,test.expectation,test.fnName,test.argument);
+});
+</code></pre>
+
+<p>Wow! This is sweet! We have a function that we can now use to test any suite of tests for any function. Kind of. This above solution is somewhat nicer than what we had before. We will have a runtime report of what is happening because of the console logs. It is also much shorter.</p>
+
+<p>But the function name is <code>testAnything</code>. Is this really true? Can this really test anything?</p>
+
+<p>What if instead of <code>isOdd</code>, we had the function <code>greaterOf</code> which returns the greater of two numbers?</p>
+
+<p>Our <code>testAnything</code> won&rsquo;t work. It expects all functions to have only one argument. This is an unrealistic and limiting expectation. Clearly <code>testAnything</code> isn&rsquo;t yet capable of testing anything.</p>
+
+<p>So what would we need to be able to test anything. We would need some manner to call a function with any number of arguments. We just learned <code>call</code> and <code>apply</code>. Maybe we can use one of those.</p>
+
+<p>Which one though? Will <code>call</code> work? Let us see.</p>
+
+<pre><code class="language-javascript">const testAnything=function(msg,expectation,fnName,arg1,arg2) {
+  console.log(msg);
+  let actual=fnName.call(null,arg1,arg2);
+  assert.equal(expectation,actual);
+}
+</code></pre>
+
+<p>This won&rsquo;t work, will it? What if we have 3 arguments instead of 2? What about 5? The problem with <code>call</code> is that it requires us to know exactly how many arguments to call when we <em>write</em> the function. However, in this case, we need a manner to apply a variable number of arguments at <em>runtime</em>.</p>
+
+<p>Well, what about <code>apply</code>? Maybe it will work, but before we try that, we also have one more thing to take care of. Our <code>testAnything</code> also currently accepts a fixed number of arguments. We need it to accept a variable number of arguments.</p>
+
+<p>Read about <a href="varargs">how this is done</a> if you don&rsquo;t know it already.</p>
+
+<p>Let us see.</p>
+
+<pre><code class="language-javascript">const isOdd=function(number) {
+  return number%2!=0;
+}
+
+const greaterThan=function(first,second) {
+  return first&gt;second;
+}
+
+const testAnything=function(msg,expectation,fnName,...args) {
+  console.log(msg);
+  let actual=fnName.apply(null,args);
+  assert.equal(expectation,actual);
+}
+
+// testing functions with single arguments
+testAnything(&quot;odd positive numbers&quot;,true,isOdd,1);
+testAnything(&quot;even positive numbers&quot;,false,isOdd,2);
+
+// testing functions that take multiple arguments
+testAnything(&quot;first number greater&quot;,2,greaterOf,2,1);
+testAnything(&quot;second number greater&quot;,2,greaterOf,1,2);
+</code></pre>
+
+<blockquote>
+<p><em>We have used <code>null</code> as the first argument to <code>apply</code> because we don&rsquo;t really have a calling context here.</em></p>
+</blockquote>
+
+<p>We now truly have a <code>testAnything</code>. In fact, now our <code>testAnything</code> can be improved to have more <code>console.log</code> statements that outline the arguments passed and we will have a lot more informative framework.</p>
+
+<hr />
+
+<h4 id="bind"><code>bind</code></h4>
+
+<p>How <code>bind</code> works has been outlined <a href="how_does_bind_work">here</a>. Please read that before you continue.</p>
+
+<p><code>bind</code> is different from <code>apply</code> and <code>call</code> in that it doesn&rsquo;t actually invoke a function. Instead, it returns a reference to a function that is bound to an object of your desire. This returned reference can then be used as many times as you wish.</p>
+
+<p>Why is this useful? Well, it has many uses. One of the most interesting usages is <a href="https://en.wikipedia.org/wiki/Partial_application">partial application</a>.</p>
+
+<p>What is partial application? It is a process where we fix a function with a few arguments and produce another function. The newly produced function will be supplied the rest of the arguments when needed.</p>
+
+<p>An example:</p>
+
+<pre><code class="language-javascript">var greaterThan=function(x,y) {
+  return x&gt;y;
+}
+
+var isTenGreaterThan=greaterThan.bind(null,10);
+console.log(isTenGreaterThan(5));
+console.log(isTenGreaterThan(15));
+</code></pre>
+
+<p>produces</p>
+
+<pre><code class="language-javascript">true
+false
+</code></pre>
+
+<p>What is happening here? <code>greaterThan</code> is bound to the <code>null</code> object. Binding to the <code>null</code> object is fine here because our <code>greaterThan</code> has no <code>this</code> references. Importantly, once bound, <code>bind</code> returns a new function. This function already has its first argument supplied. In this case, we have supplied 10 as the first argument.</p>
+
+<p>Our new function <code>isTenGreaterThan</code> does exactly what it says. Which is, it calls <code>greaterThan</code> with 10 as the first argument. The first argument you supply to <code>isTenGreaterThan</code> now becomes the second argument to <code>greaterThan</code>.</p>
+
+<p>Consider this:</p>
+
+<pre><code class="language-javascript">const numbersBelowThreshold=function(numbers,threshold) {
+  return numbers.filter(function(number){
+    return threshold&gt;number;
+  });
+}
+</code></pre>
+
+<p>One of the disadvantages of the above is that <code>filter</code> now takes an anonymous function. Anonymous functions are notorious in that they can&rsquo;t be tested easily. Partial application solves this problem very neatly.</p>
+
+<pre><code class="language-javascript">var greaterThan=function(x,y) {
+  return x&gt;y;
+}
+
+const numbersBelowThreshold=function(numbers,threshold) {
+  let isNumberBelowThreshold=greaterThan.bind(null,threshold);
+  return numbers.filter(isNumberBelowThreshold);
+}
+</code></pre>
+
+<p>Much better. The logic of comparing two numbers is now testable. <code>filter</code> no longer takes an anonymous function. We applied partial application in order to remove the anonymity of the function that <code>filter</code> accepts.</p>
+
+<p>As you can see, bind has its uses beyond merely binding the function to a specific context. It can be used to solve these kinds of problems as well.</p>
+
+
+</body>
+</html>
