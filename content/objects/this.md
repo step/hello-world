@@ -22,7 +22,7 @@ let a=5;
 
 The best way to understand `this` is to simply try a few things out. Open a node repl and simply type in `this` and press enter. What do you get? You should get a screenful of strange things. These strange things are key value pairs, much like any other object. You might get something like this
 
-![global object](/images/global_object.png)
+![global object]({{< ref "/images/global_object.png" >}})
 
 _Note: Colours might be different/absent based on your settings_
 
@@ -151,7 +151,7 @@ To make this work, we need to understand calling contexts.
 
 #### Calling context
 
-To understand calling context, one must have read about [why objects](/why_objects) and [constructors](/constructors). So brush up on that if you haven't already.
+To understand calling context, one must have read about [why objects]({{< ref "why_objects.md" >}}) and [constructors]({{< ref "constructors.md" >}}). So brush up on that if you haven't already.
 
 Let us briefly go back to our `Square` example.
 
@@ -184,7 +184,7 @@ A calling context is simply the context that Javascript has called a function wi
 
 A picture is worth a thousand words, so here:
 
-![Calling Context](/images/calling_context.png)
+![Calling Context]({{< ref "/images/calling_context.png" >}})
 
 _Note: The above image was generated using [Python Tutor](http://www.pythontutor.com/live.html#mode=edit)_
 

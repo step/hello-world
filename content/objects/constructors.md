@@ -5,7 +5,7 @@ draft: true
 weight: 13
 ---
 
-Please read [Why Objects?](/why_objects), [How Bind Works](/how_does_bind_work) and [How To Define Behaviour In An Object](/behaviour_in_an_object) before you proceed any further.
+Please read [Why Objects?]({{< ref "why_objects.md" >}}), [How Bind Works]({{< ref "others/how_does_bind_work.md" >}}) and [How To Define Behaviour In An Object]({{< ref "/behaviour_in_an_object.md" >}}) before you proceed any further.
 
 
 We have now firmly established the need for an automated mechanism to create objects and associate behaviours with it. As mentioned earlier, Javascript has the ability to do so. We achieve this by using a concept called constructors.

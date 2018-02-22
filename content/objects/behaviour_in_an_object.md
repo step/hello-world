@@ -106,5 +106,5 @@ It would be helpful if the language had a mechanism where we could automatically
 
 It turns out that Javascript does allow us to do this!
 
-Read all about it under [constructors](/constructors).
+Read all about it under [constructors]({{< ref "constructors.md" >}}).
 

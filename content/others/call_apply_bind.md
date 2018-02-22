@@ -266,7 +266,7 @@ This won't work, will it? What if we have 3 arguments instead of 2? What about 5
 
 Well, what about `apply`? Maybe it will work, but before we try that, we also have one more thing to take care of. Our `testAnything` also currently accepts a fixed number of arguments. We need it to accept a variable number of arguments.
 
-Read about [how this is done](varargs) if you don't know it already.
+Read about [how this is done]({{< ref "varargs.md" >}}) if you don't know it already.
 
 Let us see.
 ``` javascript
@@ -300,7 +300,7 @@ We now truly have a `testAnything`. In fact, now our `testAnything` can be impro
 ----
 #### `bind`
 
-How `bind` works has been outlined [here](how_does_bind_work). Please read that before you continue.
+How `bind` works has been outlined [here]({{< ref "how_does_bind_work.md" >}}). Please read that before you continue.
 
 `bind` is different from `apply` and `call` in that it doesn't actually invoke a function. Instead, it returns a reference to a function that is bound to an object of your desire. This returned reference can then be used as many times as you wish.
 
