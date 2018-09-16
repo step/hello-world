@@ -1,7 +1,6 @@
 ---
 title: "How does bind work ?"
 date: 2018-01-30T11:51:36+05:30
-draft: true
 weight: 23
 ---
 

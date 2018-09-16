@@ -1,7 +1,6 @@
 ---
 title: "What is this ?"
 date: 2018-01-30T11:25:03+05:30
-draft: true
 weight: 14
 ---
 

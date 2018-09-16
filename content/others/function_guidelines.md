@@ -1,7 +1,6 @@
 ---
 title: "Function Guidelines"
 date: 2018-01-30T11:38:43+05:30
-draft: true
 weight: 21
 ---
 

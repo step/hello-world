@@ -1,7 +1,7 @@
 {{ define "main" }}
     <div class="home">
-    {{ range .Sections }}
-        <h3 class="section-heading"> {{ .Title }} <a href="{{.Permalink}}"> ∞ </a> </h3>
+    {{ range where .Sections "Params.hidden" "!=" "true"}}
+        <h3 class="section-heading"> {{ .Title }} {{ .Params.foo }} <a href={{ .Permalink }}> ∞ </a> </h3>
         {{ partial "list_pages.html" . }}
     {{ end }}
     </div>

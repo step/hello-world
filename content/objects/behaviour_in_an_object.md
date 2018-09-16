@@ -1,7 +1,6 @@
 ---
 title: "Defining Behaviour In An Object"
 date: 2018-01-30T11:13:35+05:30
-draft: true
 weight: 12
 ---
 
